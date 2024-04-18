@@ -13,6 +13,17 @@ articles = doc.select('a.post-card')
 tags = doc.find_all(class_="TableBase-bodyTd TableBase-bodyTd--number")
 
 tbody = doc.tbody
+trs = tbody.contents
+
+for tr in trs:
+    GamesPlayed, PassAttempts = tr.contents[1:3]
+    fixed_GP = GamesPlayed.string
+    fixed_PA = PassAttempts.string
+
+#    PassAttempts[fixed_GP] = fixed_PA
+
+#print(PassAttempts)
+    
 
 for articles in articles:
 
@@ -25,4 +36,4 @@ for articles in articles:
 
 #print(doc.prettify())
 #print(tags)
-print(tbody)
+#print(tbody)
