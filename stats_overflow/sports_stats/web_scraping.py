@@ -1,39 +1,33 @@
 from bs4 import BeautifulSoup
 import requests
+from csv import writer
 
 url = "https://www.cbssports.com/nfl/stats/player/passing/nfl/regular/all/"
-
 result = requests.get(url)
 
-my_data = []
+doc = BeautifulSoup(result.content, "html.parser")
+tbody = doc.find("tbody")
+trs = tbody.find_all("tr")
 
-doc = BeautifulSoup(result.text, "html.parser")
-articles = doc.select('a.post-card')
+with open('Passing.csv', 'w', encoding='utf8', newline='') as f:
+    thewriter = writer(f)
+    header = ['Name','GP', 'PA', 'PC']
+    thewriter.writerow(header)
 
-tags = doc.find_all(class_="TableBase-bodyTd TableBase-bodyTd--number")
+    for tr in trs:
+        tds = tr.find_all("td")
+        # Extract data from each row
+        PlayerName = tds[0].find("a").get_text(strip=True)
+        GamesPlayed = tds[1].get_text(strip=True)
+        PassAttempts = tds[2].get_text(strip=True)
+        PassCompletions = tds[3].get_text(strip=True)
 
-tbody = doc.tbody
-trs = tbody.contents
-
-for tr in trs:
-    GamesPlayed, PassAttempts = tr.contents[1:3]
-    fixed_GP = GamesPlayed.string
-    fixed_PA = PassAttempts.string
+        # Write data to CSV file
+        thewriter.writerow([PlayerName, GamesPlayed, PassAttempts, PassCompletions])
 
 #    PassAttempts[fixed_GP] = fixed_PA
 
 #print(PassAttempts)
-    
-
-for articles in articles:
-
-    title = rticle.select('.card-title')[0].get_text()
-    excerpt = article.select('card-text')[0].get_text()
-    pub_date = article.select('.card-footer small')[0],get_text()
-
-
-    my_data.append({"title": title, "excerpt": excerpt, "pub_date": pub_date})
-
 #print(doc.prettify())
 #print(tags)
 #print(tbody)
