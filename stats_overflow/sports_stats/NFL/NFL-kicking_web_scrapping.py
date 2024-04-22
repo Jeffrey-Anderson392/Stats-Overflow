@@ -11,13 +11,13 @@ trs = tbody.find_all("tr")
 
 with open('NFL-Kicking.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
-    header = ['Name','FGM', 'FGP', 'LFG', 'YRDG', 'EXPM', 'EXP', 'KP']
+    header = ['Name', 'GP', 'FGM', 'FGP', 'LFG', 'YRDG', 'EXPM', 'EXP', 'KP']
     thewriter.writerow(header)
 
     for tr in trs:
         tds = tr.find_all("td")
         # Extract data from each row
-        PlayerName = tds[0].find("a").get_text(strip=True)
+        PlayerName = tds[0].find("a").get_text(strip=True) if tds[0].find("a") else 'No Name'
         GamesPlayed = tds[1].get_text(strip=True)
         FieldGoalsMade = tds[2].get_text(strip=True)
         FieldGoalPercentge = tds[3].get_text(strip=True)
