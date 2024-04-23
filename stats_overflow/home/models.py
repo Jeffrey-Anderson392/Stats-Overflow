@@ -13,8 +13,7 @@ class NBA_Team(models.Model):
         def __str__(self):
             return self.team_name
     
-class NBA_Players:
-    
+class NBA_Players(models.Model):
     player_id = models.AutoField(primary_key=True)
     team_id = models.ForeignKey('NBA_Team', on_delete=models.SET_NULL, null=True)
     fname = models.CharField(max_length=30)
@@ -33,23 +32,22 @@ class NBA_Players:
 #         self.player_id = player_id
 #         self.user_id = user_id
 
-class NFL_Team:
+class NFL_Team(models.Model):
     team_number = models.AutoField(primary_key=True)
     team_name = models.CharField(max_length=30)
         
     def __str__(self):
         return self.team_name
 
-class NFL_Players:
-    def __init__(self, player_id, team_id, fname, lname, passing_yards, passing_average_yards, passing_attempts, passing_completions):
-        player_id = models.AutoField(primary_key=True)
-        team_id = models.ForeignKey('NBA_Team', on_delete=models.SET_NULL, null=True)
-        fname = models.CharField(max_length=30)
-        lname = models.CharField(max_length=30)
-        passing_yards = models.CharField(max_length=10)
-        passing_average_yards = models.CharField(max_length=10)
-        passing_attempts = models.CharField(max_length=10)
-        passing_completions = models.CharField(max_length=10)
+class NFL_Players(models.Model):
+    player_id = models.AutoField(primary_key=True)
+    team_id = models.ForeignKey('NBA_Team', on_delete=models.SET_NULL, null=True)
+    fname = models.CharField(max_length=30)
+    lname = models.CharField(max_length=30)
+    passing_yards = models.CharField(max_length=10)
+    passing_average_yards = models.CharField(max_length=10)
+    passing_attempts = models.CharField(max_length=10)
+    passing_completions = models.CharField(max_length=10)
 
 # class User_Favorite_NFL_Team:
 #     def __init__(self, team_id, user_id):
@@ -61,68 +59,70 @@ class NFL_Players:
 #         self.player_id = player_id
 #         self.user_id = user_id
 
-class NHL_Team:
-    def __init__(self, team_id, name):
-        self.team_id = team_id
-        self.name = name
+class NHL_Team(models.Model):
+    team_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=30)
 
-class NHL_Players:
-    def __init__(self, player_id, team_id, fname, lname):
-        self.player_id = player_id
-        self.team_id = team_id
-        self.fname = fname
-        self.lname = lname
+    def __str__(self):
+        return self.name
 
-class NHL_Skaters:
-    def __init__(self, player_id, points, goals, assists):
-        self.player_id = player_id
-        self.points = points
-        self.goals = goals
-        self.assists = assists
+class NHL_Players(models.Model):
+    player_id = models.AutoField(primary_key=True)
+    team_id = models.ForeignKey('NHL_Team', on_delete=models.SET_NULL, null=True)
+    fname = models.CharField(max_length = 30)
+    lname = models.CharField(max_length = 30)
 
-class NHL_Goalies:
-    def __init__(self, player_id, gaa, SV_Percent, shutouts):
-        self.player_id = player_id
-        self.gaa = gaa
-        self.SV_Percent = SV_Percent
-        self.shutouts = shutouts
+class NHL_Skaters(models.Model):
+    player_id = models.AutoField(primary_key=True)
+    team_id = models.ForeignKey('NHL_Team', on_delete=models.SET_NULL, null=True)
+    points = models.CharField(max_length = 10)
+    goals = models.CharField(max_length = 10)
+    assists = models.CharField(max_length = 10)
 
-class User_Favorite_NHL_Team:
-    def __init__(self, team_id, user_id):
-        self.team_id =team_id
-        self.user_id = user_id
+class NHL_Goalies(models.Model):
+    player_id = models.AutoField(primary_key=True)
+    team_id = models.ForeignKey('NHL_Team', on_delete=models.SET_NULL, null=True)
+    gaa = models.CharField(max_length = 10)
+    SV_Percent = models.CharField(max_length = 10)
+    shutouts = models.CharField(max_length = 10)
 
-class User_Favorite_NHL_Players:
-    def __init__(self, player_id, user_id):
-        self.player_id = player_id
-        self.user_id = user_id
+# class User_Favorite_NHL_Team:
+#     def __init__(self, team_id, user_id):
+#         self.team_id =team_id
+#         self.user_id = user_id
 
-class Valorant_team:
-    def __init__(self, team_id, name):
-        self.team_id = team_id
-        self.name = name
+# class User_Favorite_NHL_Players:
+#     def __init__(self, player_id, user_id):
+#         self.player_id = player_id
+#         self.user_id = user_id
 
-class Valorant_Players:
-    def __init__(self, player_id, team_id, fname, lname, kills, deaths, kd, ACS, Kills_per_round):
-        self.player_id = player_id
-        self.team_id =  team_id
-        self.fname = fname
-        self.lname = lname
-        self.kills = kills 
-        self.deaths = deaths
-        self.kd = kd
-        self.ACS = ACS
-        self.Kills_per_round = Kills_per_round
+class Valorant_Team(models.Model):
+    team_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=30)
 
-class User_Favorite_Valorant_Players:
-    def __init__(self, player_id, user_id):
-        self.player_id = player_id
-        self.user_id = user_id
+    def __str__(self):
+        return self.name
 
-class User_Favorite_Valorant_Team:
-    def __init__(self, team_id, user_id):
-        self.team_id = team_id
-        self.user_id = user_id
+class Valorant_Players(models.Model):
+    player_id = models.AutoField(primary_key=True)
+    team_id = models.ForeignKey('Valorant_Team', on_delete=models.SET_NULL, null=True)
+    fname = models.CharField(max_length=30)
+    lname = models.CharField(max_length=30)
+    kills = models.CharField(max_length = 10)
+    deaths = models.CharField(max_length = 10)
+    kd = models.CharField(max_length = 10)
+    ACS = models.CharField(max_length = 10)
+    Kills_per_round = models.CharField(max_length = 10)
+
+# class User_Favorite_Valorant_Players:
+#     def __init__(self, player_id, user_id):
+#         self.player_id = player_id
+#         self.user_id = user_id
+
+# class User_Favorite_Valorant_Team:
+#     def __init__(self, team_id, user_id):
+#         self.team_id = team_id
+#         self.user_id = user_id
 
 """User- attributes: user_id, fname, lname 
 
