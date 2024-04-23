@@ -1,64 +1,63 @@
 from django.db import models
 
 # Create your models here.
+from django.db.models import UniqueConstraint # Constrains fields to unique values
+from django.db.models.functions import Lower # Returns lower cased value of field
 
-class User:
-    def __init__(self, user_id, fname, lname):
-        self.user_id = user_id
-        self.fname = fname
-        self.lname = lname
+from django.conf import settings
 
-class NBA_Team:
-    def __init__(self, team_id, name):
-        self.team_id = team_id
-        self.name = name
-
-class NBA_Players:
-    def __init__(self, player_id, team_id, fname, lname, player_points, player_rebounds, player_shots, player_assists):
-        self.player_id = player_id
-        self.team_id = team_id
-        self.fname = fname
-        self.lname = lname
-        self.player_points = player_points
-        self.player_rebounds = player_rebounds
-        self.player_shots = player_shots
-        self.player_assists = player_assists
-
-class User_Favorite_NBA_Team:
-    def __init__(self, team_id, user_id):
-        self.team_id = team_id
-        self.user_id = user_id
-
-class User_Favorite_NBA_Players:
-    def __init__(self, player_id, user_id):
-        self.player_id = player_id
-        self.user_id = user_id
-
-class NFL_Team:
-    def __init__(modelself, team_id, name):
-        self.team_id = models
-        self.name = name
-
-class NFL_Players:
-    def __init__(self, player_id, team_id, fname, lname, passing_yards, passing_average_yards, passing_attempts, passing_completions):
-        self.player_id = player_id
-        self.team_id = team_id
-        self.fname = fname
-        self.lname = lname
-        self.passing_yards = passing_yards
-        self.passing_average_yards = passing_average_yards
-        self.passing_attempts = passing_attempts
-        self.passing_completions = passing_completions
-
-class User_Favorite_NFL_Team:
-    def __init__(self, team_id, user_id):
-        self.team_id = team_id
-        self.user_id = user_id
+class NBA_Team(models.Model):
+        team_number = models.AutoField(primary_key=True)
+        team_name = models.CharField(max_length=30)
         
-class User_Favorite_NFL_Players:
-    def __init__(self, player_id, user_id):
-        self.player_id = player_id
-        self.user_id = user_id
+        def __str__(self):
+            return self.team_name
+    
+class NBA_Players(models.Model):
+    player_id = models.AutoField(primary_key=True)
+    team_id = models.ForeignKey('NBA_Team', on_delete=models.SET_NULL, null=True)
+    fname = models.CharField(max_length=30)
+    lname = models.CharField(max_length=30)
+    player_points = models.CharField(max_length=10)
+    player_rebounds = models.CharField(max_length=10)
+    player_shots = models.CharField(max_length=10)
+
+# class User_Favorite_NBA_Team:
+#     def __init__(self, team_id, user_id):
+#         self.team_id = team_id
+#         self.user_id = user_id
+
+# class User_Favorite_NBA_Players:
+#     def __init__(self, player_id, user_id):
+#         self.player_id = player_id
+#         self.user_id = user_id
+
+class NFL_Team(models.Model):
+    team_number = models.AutoField(primary_key=True)
+    team_name = models.CharField(max_length=30)
+        
+    def __str__(self):
+        return self.team_name
+
+class NFL_Players(models.Model):
+    player_id = models.AutoField(primary_key=True)
+    team_id = models.ForeignKey('NBA_Team', on_delete=models.SET_NULL, null=True)
+    fname = models.CharField(max_length=30)
+    lname = models.CharField(max_length=30)
+    passing_yards = models.CharField(max_length=10)
+    passing_average_yards = models.CharField(max_length=10)
+    passing_attempts = models.CharField(max_length=10)
+    passing_completions = models.CharField(max_length=10)
+
+# class User_Favorite_NFL_Team:
+#     def __init__(self, team_id, user_id):
+#         self.team_id = team_id
+#         self.user_id = user_id
+        
+# class User_Favorite_NFL_Players:
+#     def __init__(self, player_id, user_id):
+#         self.player_id = player_id
+#         self.user_id = user_id
 
 class NHL_Team(models.Model):
     team_id = models.AutoField(primary_key=True)
