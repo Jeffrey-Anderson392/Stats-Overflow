@@ -18,10 +18,11 @@ from django.db.models.functions import Lower # Returns lower cased value of fiel
 from django.conf import settings
 
 class NBA_Team(models.Model):
-        team_number = models.AutoField(primary_key=True)
-        team_name = models.CharField(max_length=30)
+    team_number = models.AutoField(primary_key=True)
+    team_name = models.CharField(max_length=30)
+    team_conference = models.CharField(max_length=30)
         
-        def __str__(self):
+    def __str__(self):
             return self.team_name
     
 class NBA_Players(models.Model):
@@ -46,6 +47,7 @@ class NBA_Players(models.Model):
 class NFL_Team(models.Model):
     team_number = models.AutoField(primary_key=True)
     team_name = models.CharField(max_length=30)
+    team_conference = models.CharField(max_length=30)
         
     def __str__(self):
         return self.team_name
@@ -73,6 +75,7 @@ class NFL_Players(models.Model):
 class NHL_Team(models.Model):
     team_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=30)
+    team_conference = models.CharField(max_length=30)
 
     def __str__(self):
         return self.name
