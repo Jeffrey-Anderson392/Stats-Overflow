@@ -14,14 +14,21 @@ class NBA_Team:
         self.name = name
 
 class NBA_Players:
-    def __init__(self, player_id, team_id, fname, lname, player_points, player_rebounds, player_shots):
-        self.player_id = player_id
-        self.team_id = team_id
-        self.fname = fname
-        self.lname = lname
-        self.player_points = player_points
-        self.player_rebounds = player_rebounds
-        self.player_shots = player_shots
+    def __init__(Name, GamesPlayed, GamesStarted, MinutesPerGame, PointsPerGame, FieldGoalsMade, FieldGoalsAttempted, FieldGoalPercentage, ThreePointGoalsMade, ThreePointGoalsAttempted, ThreePointFieldGoalPercentage, FreeThrowsMade, FreeThrowsAttempted, FreeThrowsPercentage):
+        self.Name = Name
+        self.GamesPlayed = GamesPlayed
+        self.GamesStarted = GamesStarted
+        self.MinutesPerGame = MinutesPerGame
+        self.PointsPerGame = PointsPerGame
+        self.FieldGoalsMade = FieldGoalsMade
+        self.FieldGoalsAttempted = FieldGoalsAttempted
+        self.FieldGoalPercentage = FieldGoalPercentage
+        self.ThreePointGoalsMade = ThreePointGoalsMade
+        self.ThreePointFieldGoalsAttempted = ThreePointFieldGoalsAttempted
+        self.ThreePointFieldGoalPercentage = ThreePointFieldGoalPercentage
+        self.FreeThrowsMade = FreeThrowsMade
+        self.FreeThrowsAttempted = FreeThrowsAttempted
+        self.FreeThrowsPerentage = FreeThrowsPerentage
 
 class User_Favorite_NBA_Team:
     def __init__(self, team_id, user_id):
