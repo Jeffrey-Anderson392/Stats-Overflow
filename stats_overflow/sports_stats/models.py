@@ -24,15 +24,22 @@ class NBA_Team(models.Model):
         
     def __str__(self):
             return self.team_name
-    
-class NBA_Players(models.Model):
-    player_id = models.AutoField(primary_key=True)
-    team_id = models.ForeignKey('NBA_Team', on_delete=models.SET_NULL, null=True)
-    fname = models.CharField(max_length=30)
-    lname = models.CharField(max_length=30)
-    player_points = models.CharField(max_length=10)
-    player_rebounds = models.CharField(max_length=10)
-    player_shots = models.CharField(max_length=10)
+
+class NBA_Player_Scoring_Stats(models.Model):
+    PlayerName = models.CharField(max_length=30)
+    GamesPlayed = models.CharField(max_length=10)
+    GamesStarted = models.CharField(max_length=10)
+    MinutesPerGame = models.CharField(max_length=10)
+    PointsPerGame = models.CharField(max_length=10)
+    FieldGoalsMade = models.CharField(max_length=10)
+    FieldGoalsAttempted = models.CharField(max_length=10)
+    FieldGoalPercentage = models.CharField(max_length=10)
+    ThreePointFieldGoalsMade = models.CharField(max_length=10) 
+    ThreePointFieldGoalsAttempted = models.CharField(max_length=10)
+    ThreePointFieldGoalPercentage = models.CharField(max_length=10)
+    FreeThrowsMade = models.CharField(max_length=10)
+    FreeThrowsAttempted = models.CharField(max_length=10)
+    FreeThrowPerentage = models.CharField(max_length=10)
 
 # class User_Favorite_NBA_Team:
 #     def __init__(self, team_id, user_id):

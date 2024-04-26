@@ -1,4 +1,4 @@
-Name,GP,GS,MPG,PPG,FGM,FGA,FG%,3FGM,3FGA,3FG%,FTM,FTA,FT%
+Name,GamesPlayed,GamesStarted,MinutesPerGame,PointsPerGame,FieldGoalsMade,FieldGoalsAttempted,FieldGoalPercentage,ThreeFieldGoalsMade,ThreeFieldGoalsAttempted,ThreeFieldGoalPercentage,FreeThrowsMade,FreeThrowsAttempted,FreeThrowsPercentage
 L. Doncic,70,70,37.5,33.9,804,1652,48.7,284,744,38.2,478,608,78.6
 G. Antetokounmpo,73,73,35.2,30.4,837,1369,61.1,34,124,27.4,514,782,65.7
 S. Gilgeous-Alexander,75,75,34.0,30.1,796,1487,53.5,95,269,35.3,567,649,87.4
