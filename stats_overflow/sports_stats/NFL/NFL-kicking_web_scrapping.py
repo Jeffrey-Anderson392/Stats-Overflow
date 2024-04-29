@@ -11,7 +11,7 @@ trs = tbody.find_all("tr")
 
 with open('NFL-Kicking.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
-    header = ['Name', 'GP', 'FGM', 'FGP', 'LFG', 'YRDG', 'EXPM', 'EXP', 'KP']
+    header = ['PlayerName', 'GamesPlayed', 'FieldGoalsMade', 'FieldGoalPercentage', 'LongestFieldGoal', 'ExtraPointsMade', 'ExtraPointPercentage', 'KickingPoints']
     thewriter.writerow(header)
 
     for tr in trs:

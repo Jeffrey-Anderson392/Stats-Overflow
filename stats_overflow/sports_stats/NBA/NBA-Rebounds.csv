@@ -1,4 +1,4 @@
-Name,GP,GS,MPG,OREB,DREB,REB,RPG
+PlayerName,GamesPlayed,GamesStarted,MinutesPerGame,OffensiveRebounds,DeffensiveRebounds,TotalRebounds,ReboundsPerGame
 D. Sabonis,82,82,35.7,294,826,1120,13.7
 R. Gobert,76,76,34.1,285,697,982,12.9
 A. Davis,76,76,35.5,239,722,961,12.6

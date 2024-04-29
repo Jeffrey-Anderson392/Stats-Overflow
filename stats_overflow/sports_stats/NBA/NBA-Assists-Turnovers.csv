@@ -1,4 +1,4 @@
-Name,GP,GS,AST,APG,TO,TOPG,A/TO
+PlayerName,GamesPlayed,GamesStarted,TotalAssists,AssistsPerGame,Turnover,TurnoversPerGame,AssistsPerTurnover
 T. Haliburton,69,68,752,10.9,159,2.3,4.7
 L. Doncic,70,70,686,9.8,282,4.0,2.4
 N. Jokic,79,79,708,9.0,237,3.0,3.0

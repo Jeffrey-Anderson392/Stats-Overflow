@@ -1,4 +1,4 @@
-Name,GP,RUTD,RETD,PR,KR,INTR,FUMR,FG,XP,SFTY,2-PT,PTS,PTS/G
+PlayerName,GamesPlayed,RushingTouchdowns,ReceivingTouchdowns,PuntReturnTouchdowns,KickOffReturnedForTouchdowns,InterceptionsReturnedForTouchdowns,FumbleRecoveriesReturnedForTouchdowns,FieldGoals,ExtraPoints,Safeties,TwoPointConversions,TotalPoints,PointsPerGame
 B. Aubrey,17,—,—,—,—,—,—,36,49,—,—,157,—
 J. Tucker,17,—,—,—,—,—,—,32,51,—,—,147,—
 J. Myers,17,—,—,—,—,—,—,35,33,—,—,138,—

@@ -1,4 +1,4 @@
-Name,GP,PUNTS,YDS,LNG,AVG,NET,IN20,TB,FC,RET,RETY,AVG,BLK
+PlayerName,GamesPlayed,Punts,PuntingYards,LongestPunts,AverageYardsPerPunt,NetPuntingAverage,PuntsInside20,Touchbacks,PuntsResultingInAFairCatch,PuntsReturned,PuntReturnYardsAgainst,AverageYardsPerPuntReturn,PuntsBlocked
 R. Stonehouse,12,53,2812,74,53.1,43.9,28,10,7,22,243,—,1
 B. Anger,17,44,2262,63,51.4,44.9,17,2,13,24,247,—,0
 B. Gillikin,13,51,2580,77,50.6,43.6,11,2,9,29,318,—,0

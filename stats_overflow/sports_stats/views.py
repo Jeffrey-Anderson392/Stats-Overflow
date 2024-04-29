@@ -17,12 +17,9 @@ def NHL(request):
 def Valorant(request):
     return render(request, 'sports_stats/Valorant.html', {})
 
-import csv
-from .models import NFL_Players
 
 
-
-def parse_csv_and_save_to_database(csv_file):
+""" def parse_csv_and_save_to_database(csv_file):
     with open(csv_file, 'r') as file:
         reader = csv.DictReader(file)
             for row in reader:
@@ -42,6 +39,6 @@ def parse_csv_and_save_to_database(csv_file):
                 player.save()
 
 def import_data_from_csv(request):
-    csv_file_path = '\Users\amack\OneDrive\Documents\GitHub\Stats-Overflow\stats_overflow\sports_stats\NBA' 
+     
     parse_csv_and_save_to_database(csv_file_path)
-    return HttpResponse("Data imported successfully!")
+    return HttpResponse("Data imported successfully!") """
