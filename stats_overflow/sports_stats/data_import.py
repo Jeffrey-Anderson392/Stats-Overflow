@@ -9,8 +9,8 @@ from stats_overflow.sports_stats.models import NBA_Player_Blocks_Stats
 from stats_overflow.sports_stats.models import NBA_Player_Assists_Stats
 #NFL imports
 from stats_overflow.sports_stats.models import NFL_Player_Defense_Stats
-from stats_overflow.sports_stats.models import NFL_Player_Kick_Return_Stats
-from stats_overflow.sports_stats.models import NFL_Player_KickingStats
+from stats_overflow.sports_stats.models import NFL_Player_Kick_Returns_Stats
+from stats_overflow.sports_stats.models import NFL_Player_Kicking_Stats
 from stats_overflow.sports_stats.models import NFL_Player_Passing_Stats
 from stats_overflow.sports_stats.models import NFL_Player_Punt_Returns_Stats
 from stats_overflow.sports_stats.models import NFL_Player_Punting_Stats
@@ -46,6 +46,10 @@ def import_nba_player_scoring_stats(csv_file_path):
                 FreeThrowPerentage=row['FreeThrowsPercentage']
             )
             player_stat.save()
+    except FileNotFoundError:
+        print(f"File not found: {csv_file_path}")
+    except Exception as e:
+        print(f"An error occurred while importing data from {csv_file_path}: {e}")
 
 def import_nba_player_steals_stats(csv_file_path):
     with open(csv_file_path, 'r') as file:
@@ -56,8 +60,13 @@ def import_nba_player_steals_stats(csv_file_path):
                 GamesPlayed=row['GamesPlayed'],
                 GamesStarted=row['GamesStarted'],
                 TotalSteals=row['TotalSteals'],
-                StealsPerGame=['StealsPerGame']
+                StealsPerGame=row['StealsPerGame']
             )
+            player_stat.save()
+    except FileNotFoundError:
+        print(f"File not found: {csv_file_path}")
+    except Exception as e:
+        print(f"An error occurred while importing data from {csv_file_path}: {e}")
 
 def import_nba_player_rebounds_stats(csv_file_path):
     with open(csv_file_path, 'r') as file:
@@ -73,6 +82,11 @@ def import_nba_player_rebounds_stats(csv_file_path):
                 TotalRebounds=row['TotalRebounds'],
                 ReboundsPerGame=row['ReboundsPerGame']
             )
+            player_stat.save()
+    except FileNotFoundError:
+        print(f"File not found: {csv_file_path}")
+    except Exception as e:
+        print(f"An error occurred while importing data from {csv_file_path}: {e}")
 
 def import_nba_player_fouls_stats(csv_file_path):
     with open(csv_file_path, 'r') as file:
@@ -90,6 +104,11 @@ def import_nba_player_fouls_stats(csv_file_path):
                 Ejections=row['Ejections'], 
                 Disqualifications=row['Disqualifications']
             )
+            player_stat.save()
+    except FileNotFoundError:
+        print(f"File not found: {csv_file_path}")
+    except Exception as e:
+        print(f"An error occurred while importing data from {csv_file_path}: {e}")
 
 def import_nba_player_blocks_stats(csv_file_path):
     with open(csv_file_path, 'r') as file:
@@ -102,6 +121,11 @@ def import_nba_player_blocks_stats(csv_file_path):
                 TotalBlocks=row['TotalBlocks'], 
                 BlocksPerGame=row['BlocksPerGame']
             )
+            player_stat.save()
+    except FileNotFoundError:
+        print(f"File not found: {csv_file_path}")
+    except Exception as e:
+        print(f"An error occurred while importing data from {csv_file_path}: {e}")
 
 def import_nba_player_assists_stats(csv_file_path):
     with open(csv_file_path, 'r') as file:
@@ -117,6 +141,11 @@ def import_nba_player_assists_stats(csv_file_path):
                 TurnoversPerGame=row['TurnoversPerGame'], 
                 AssistsPerTurnover=row['AssistsPerTurnover']
             )
+            player_stat.save()
+    except FileNotFoundError:
+        print(f"File not found: {csv_file_path}")
+    except Exception as e:
+        print(f"An error occurred while importing data from {csv_file_path}: {e}")
 
 # NFL import data
 
@@ -141,6 +170,11 @@ def import_nfl_player_defense_stats(csv_file_path):
                 PassesDefensed=row['PassesDefensed'], 
                 Safties=row['Safties']
             )
+            player_stat.save()
+    except FileNotFoundError:
+        print(f"File not found: {csv_file_path}")
+    except Exception as e:
+        print(f"An error occurred while importing data from {csv_file_path}: {e}")
 
 def import_nfl_player_kick_returns_stats(csv_file_path):
     with open(csv_file_path, 'r') as file:
@@ -155,6 +189,11 @@ def import_nfl_player_kick_returns_stats(csv_file_path):
                 LongestKickOffReturn=row['LongestKickOffReturn'], 
                 KickOffReturnTouchdowns=row['KickOffReturnTouchdowns']
             )
+            player_stat.save()
+    except FileNotFoundError:
+        print(f"File not found: {csv_file_path}")
+    except Exception as e:
+        print(f"An error occurred while importing data from {csv_file_path}: {e}")
 
 def import_nfl_player_kicking_stats(csv_file_path):
     with open(csv_file_path, 'r') as file:
@@ -170,6 +209,11 @@ def import_nfl_player_kicking_stats(csv_file_path):
                 ExtraPointPercentage=row['ExtraPointPercentage'], 
                 KickingPoints=row['KickingPoints']
             )
+            player_stat.save()
+    except FileNotFoundError:
+        print(f"File not found: {csv_file_path}")
+    except Exception as e:
+        print(f"An error occurred while importing data from {csv_file_path}: {e}")
 
 def import_nfl_player_passing_stats(csv_file_path):
     with open(csv_file_path, 'r') as file:
@@ -189,6 +233,11 @@ def import_nfl_player_passing_stats(csv_file_path):
                 TimesSacked=row['TimesSacked'], 
                 SackYardsLost=row['SackYardsLost']
             )
+            player_stat.save()
+    except FileNotFoundError:
+        print(f"File not found: {csv_file_path}")
+    except Exception as e:
+        print(f"An error occurred while importing data from {csv_file_path}: {e}")
 
 def import_nfl_player_punt_returns_stats(csv_file_path):
     with open(csv_file_path, 'r') as file:
@@ -204,6 +253,11 @@ def import_nfl_player_punt_returns_stats(csv_file_path):
                 PuntReturnTouchdowns=row['PuntReturnTouchdowns'], 
                 FairCatches=row['FairCatches']
             )
+            player_stat.save()
+    except FileNotFoundError:
+        print(f"File not found: {csv_file_path}")
+    except Exception as e:
+        print(f"An error occurred while importing data from {csv_file_path}: {e}")
 
 def import_nfl_player_punting_stats(csv_file_path):
     with open(csv_file_path, 'r') as file:
@@ -225,6 +279,11 @@ def import_nfl_player_punting_stats(csv_file_path):
                 AverageYardsPerPuntReturn=row=['AverageYardsPerPuntReturn'], 
                 PuntsBlocked=row['PuntsBlocked']
             )
+            player_stat.save()
+    except FileNotFoundError:
+        print(f"File not found: {csv_file_path}")
+    except Exception as e:
+        print(f"An error occurred while importing data from {csv_file_path}: {e}")
 
 def import_nfl_player_receiving_stats(csv_file_path):
     with open(csv_file_path, 'r') as file:
@@ -240,6 +299,11 @@ def import_nfl_player_receiving_stats(csv_file_path):
                 LongestReception=row['LongestReception'],
                 ReceivingTouchdowns=row['ReceivingTouchdowns']
             )
+            player_stat.save()
+    except FileNotFoundError:
+        print(f"File not found: {csv_file_path}")
+    except Exception as e:
+        print(f"An error occurred while importing data from {csv_file_path}: {e}")
 
 def import_nfl_player_rushing_stats(csv_file_path):
     with open(csv_file_path, 'r') as file:
@@ -255,6 +319,11 @@ def import_nfl_player_rushing_stats(csv_file_path):
                 RushingTouchdowns=row['RusingTouchdowns'], 
                 LongestRush=row['LongestRush']
             )
+            player_stat.save()
+    except FileNotFoundError:
+        print(f"File not found: {csv_file_path}")
+    except Exception as e:
+        print(f"An error occurred while importing data from {csv_file_path}: {e}")
 
 def import_nfl_player_scoring_stats(csv_file_path):
     with open(csv_file_path, 'r') as file:
@@ -276,6 +345,11 @@ def import_nfl_player_scoring_stats(csv_file_path):
                 TotalPoints=row['TotalPoints'], 
                 PointsPerGame=row['PointsPerGame']
             )
+            player_stat.save()
+    except FileNotFoundError:
+        print(f"File not found: {csv_file_path}")
+    except Exception as e:
+        print(f"An error occurred while importing data from {csv_file_path}: {e}")
 
 #NHL import data
 
@@ -297,6 +371,11 @@ def import_nhl_player_goaltending_stats(csv_file_path):
                 Shutout=row['Shutout'], 
                 ShootoutGoalsMadeAndAttempted=row['ShootoutGoalsMadeAndAttempted']
             )
+            player_stat.save()
+    except FileNotFoundError:
+        print(f"File not found: {csv_file_path}")
+    except Exception as e:
+        print(f"An error occurred while importing data from {csv_file_path}: {e}")
 
 def import_nhl_player_penalties_stats(csv_file_path):
     with open(csv_file_path, 'r') as file:
@@ -309,6 +388,11 @@ def import_nhl_player_penalties_stats(csv_file_path):
                 MajorPenalties=row['MajorPenalties'], 
                 MinorPenalties=row['MinorPenalties']
             )
+            player_stat.save()
+    except FileNotFoundError:
+        print(f"File not found: {csv_file_path}")
+    except Exception as e:
+        print(f"An error occurred while importing data from {csv_file_path}: {e}")
 
 def import_nhl_player_scoring_stats(csv_file_path):
     with open(csv_file_path, 'r') as file:
@@ -333,6 +417,11 @@ def import_nhl_player_scoring_stats(csv_file_path):
                 TimeOnIcePerGame=row['TimeOnIcePerGame'],
                 ShootoutGoalsMadeAndAttempted=row['ShootoutGoalsMadeAndAttempted']
             )
+            player_stat.save()
+    except FileNotFoundError:
+        print(f"File not found: {csv_file_path}")
+    except Exception as e:
+        print(f"An error occurred while importing data from {csv_file_path}: {e}")
 
 # Calling function with NBA paths
 nba_scoring_csv_file_path = os.path.join(os.path.dirname(__file__), 'NBA', 'NBA-Scoring.csv')
