@@ -11,7 +11,7 @@ trs = tbody.find_all("tr")
 
 with open('NFL-Rushing.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
-    header = ['Name','GP', 'RA', 'YRD', 'YRDG', 'AYDR', 'RTD', 'LR']
+    header = ['PlayerName','GamesPlayed', 'RushingAttempts', 'RushingYards', 'RushingYardsPerGame', 'AverageYardsPerRush', 'RushingTouchdowns', 'LongestRush']
     thewriter.writerow(header)
 
     for tr in trs:
@@ -23,7 +23,7 @@ with open('NFL-Rushing.csv', 'w', encoding='utf8', newline='') as f:
         RushingYards = tds[3].get_text(strip=True)
         RushingYardsPerGame = tds[4].get_text(strip=True)
         AverageYardsPerRush = tds[5].get_text(strip=True)
-        RushingTouchDowns = tds[6].get_text(strip=True)
+        RushingTouchdowns = tds[6].get_text(strip=True)
         LongestRush = tds[7].get_text(strip=True)
 
         # Write data to CSV file
