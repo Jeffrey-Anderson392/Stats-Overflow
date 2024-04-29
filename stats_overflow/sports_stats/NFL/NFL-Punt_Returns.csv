@@ -1,4 +1,4 @@
-Name,GP,RET,RETY,AVG,LNG,TD,FC
+PlayerName,GamesPlayed,PuntReturns,PuntReturnYards,AverageYardsPerPuntReturn,LongestPuntReturn,PuntReturnTouchdowns,FairCatches
 T. Wallace,11,6,127,21.2,76,1,6
 C. Bolton,13,1,17,17.0,17,0,0
 M. Mims,16,19,312,16.4,52,0,13

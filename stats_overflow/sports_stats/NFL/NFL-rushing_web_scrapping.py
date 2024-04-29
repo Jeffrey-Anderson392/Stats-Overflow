@@ -27,4 +27,4 @@ with open('NFL-Rushing.csv', 'w', encoding='utf8', newline='') as f:
         LongestRush = tds[7].get_text(strip=True)
 
         # Write data to CSV file
-        thewriter.writerow([PlayerName, GamesPlayed, RushingAttempts, RushingYards, RushingYardsPerGame, AverageYardsPerRush, RushingTouchDowns, LongestRush])
+        thewriter.writerow([PlayerName, GamesPlayed, RushingAttempts, RushingYards, RushingYardsPerGame, AverageYardsPerRush, RushingTouchdowns, LongestRush])

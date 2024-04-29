@@ -1,4 +1,4 @@
-Name,GP,G,A,P,+/-,PM,PPG,PPA,SHG,OTG,GW,SHA,SOG,SOG%,TOI/G,SGM-A
+PlayerName,GamesPlayed,Goals,Assists,Points,PlusMinusGoalsScoredForOrAgainstTotal,PenaltyMinutes,PowerPlayGoals,PowerPlayAssists,ShortHandedGoals,OverTimeGoals,GameWinningGoals,ShortHandedAssists,ShotsOnGoal,ShotsOnGoalPercentage,TimeOnIcePerGame,ShootoutGoalsMadeAndAttempted
 N. Kucherov,81,44,100,144,8,22,13,40,0,1,6,0,306,14.4,21:40,0-2
 N. MacKinnon,82,51,89,140,35,42,10,38,0,2,9,0,405,12.6,22:49,0-3
 C. McDavid,76,32,100,132,35,30,7,37,1,1,5,0,263,12.2,21:22,2-3

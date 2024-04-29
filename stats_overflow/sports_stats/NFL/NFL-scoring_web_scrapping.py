@@ -33,4 +33,4 @@ with open('NFL-scoring.csv', 'w', encoding='utf8', newline='') as f:
         PointsPerGame = tds[13].get_text(strip=True)
 
         # Write data to CSV file
-        thewriter.writerow([PlayerName, GamesPlayed, RushingTouchdowns, ReceivingTouchdowns, PuntReturnTouchdowns, KickOffReturnTouchdowns, InterceptionsReturnedForTouchdowns, FumbleRecoveriesReturnedForTouchdowns, FieldGoals, ExtraPoint, Safeties, TwoPointConversions, TotalPoints, PointsPerGame])
+        thewriter.writerow([PlayerName, GamesPlayed, RushingTouchdowns, ReceivingTouchdowns, PuntReturnTouchdowns, KickOffReturnedTouchdowns, InterceptionsReturnedForTouchdowns, FumbleRecoveriesReturnedForTouchdowns, FieldGoals, ExtraPoints, Safeties, TwoPointConversions, TotalPoints, PointsPerGame])

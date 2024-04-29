@@ -1,4 +1,4 @@
-Name,GP,GS,MPG,PF,PFG,FLG,TF,EJ,DSQ
+PlayerName,GamesPlayed,GamesStarted,MinutesPerGame,TotalPersonalFouls,PersonalFoulsPerGame,FlagrantFouls,TechnicalFouls,Ejections,Disqualifications
 D. DeRozan,79,79,37.8,161,2,3,6,2,0
 L. Doncic,70,70,37.5,149,2.1,0,16,0,0
 T. Maxey,70,70,37.5,151,2.2,0,2,0,1
