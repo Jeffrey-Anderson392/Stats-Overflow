@@ -11,7 +11,7 @@ trs = tbody.find_all("tr")
 
 with open('NFL-Defense.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
-    header = ['Name', 'GP', 'STK', 'ATK', 'CMB', 'INT', 'YDS', 'LNG', 'TD', 'FUM', 'FREC', 'FTD', 'SCK', 'PDEF', 'SFTY']
+    header = ['PlayerName', 'GamesPlayed', 'SoloTackles', 'AssistedTackles', 'TotalTackles', 'Interceptions', 'InterceptionYards', 'LongestInterceptions', 'InterceptionsReturnedForTouchdowns', 'ForcedFumbles', 'FumbleRecoveries', 'FumbleRecoveriesReturnedForTouchdowns', 'Sacks', 'PassesDefensed', 'Safties']
     thewriter.writerow(header)
 
     for tr in trs:

@@ -11,7 +11,7 @@ trs = tbody.find_all("tr")
 
 with open('NFL-Passing.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
-    header = ['Name','GP', 'PA', 'PC', 'CP', 'PY', 'PYG', 'LC', 'TD', 'IN', 'SCK', 'YDSL']
+    header = ['PlayerName','GamesPlayed', 'PassAttempts', 'PassCompletions', 'CompletionPercentages', 'PassingYards', 'PassingYardsPerGame', 'LongestCompletion', 'TouchdownPasses', 'Interceptions', 'TimesSacked', 'SackYardsLost']
     thewriter.writerow(header)
 
     for tr in trs:

@@ -11,7 +11,7 @@ trs = tbody.find_all("tr")
 
 with open('NFL-Punting.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
-    header = ['Name', 'GP', 'PUNTS', 'YDS', 'LNG', 'AVG', 'NET', 'IN20', 'TB', 'FC', 'RET', 'RETY', 'AVG', 'BLK']
+    header = ['PlayerName', 'GamesPlayed', 'Punts', 'PuntingYards', 'LongestPunts', 'AverageYardsPerPunt', 'NetPuntingAverage', 'PuntsInside20', 'Touchbacks', 'PuntsResultingInAFairCatch', 'PuntsReturned', 'PuntReturnYardsAgainst', 'AverageYardsPerPuntReturn', 'PuntsBlocked']
     thewriter.writerow(header)
 
     for tr in trs:
