@@ -11,7 +11,7 @@ trs = tbody.find_all("tr")
 
 with open('NHL-penalties.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
-    header = ['Name', 'GP', 'PM', 'MAJ', 'MIN']
+    header = ['PlayerName', 'GamesPlayed', 'PenaltyMinutes', 'MajorPenalties', 'MinorPenalties']
     thewriter.writerow(header)
 
     for tr in trs:

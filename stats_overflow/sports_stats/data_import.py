@@ -17,9 +17,14 @@ from stats_overflow.sports_stats.models import NFL_Player_Punting_Stats
 from stats_overflow.sports_stats.models import NFL_Player_Receiving_Stats
 from stats_overflow.sports_stats.models import NFL_Player_Rushing_Stats
 from stats_overflow.sports_stats.models import NFL_Player_Scoring_Stats
+#NHL imports
+from stats_overflow.sports_stats.models import NHL_Player_Goaltending_Stats
+from stats_overflow.sports_stats.models import NHL_Player_Penalties_Stats
+from stats_overflow.sports_stats.models import NHL_Player_Scoring_Stats
 
 
-# NBA imports
+# NBA import data
+
 def import_nba_player_scoring_stats(csv_file_path):
     with open(csv_file_path, 'r') as file:
         reader = csv.DictReader(file)
@@ -113,7 +118,8 @@ def import_nba_player_assists_stats(csv_file_path):
                 AssistsPerTurnover=row['AssistsPerTurnover']
             )
 
-# NFL imports
+# NFL import data
+
 def import_nfl_player_defense_stats(csv_file_path):
     with open(csv_file_path, 'r') as file:
         reader = csv.DictReader(file)
@@ -271,6 +277,63 @@ def import_nfl_player_scoring_stats(csv_file_path):
                 PointsPerGame=row['PointsPerGame']
             )
 
+#NHL import data
+
+def import_nhl_player_goaltending_stats(csv_file_path):
+    with open(csv_file_path, 'r') as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            player_stat = NHL_Player_Goaltending_Stats(
+                PlayerName=row['Name'], 
+                GamesPlayed=row['GamesPlayed'], 
+                GamesStarted=row['GamesStarted'], 
+                GoalsAgainstAverage=row['GoalsAgainstAverage'], 
+                SavesPercentage=row['SavesPercentage'], 
+                GoalsAgainst=row['GoalsAgainst'], 
+                ShotsAgainst=row['ShotsAgainst'], 
+                Wins=row['Wins'], 
+                Losses=row['Losses'], 
+                OvertimeLoss=row['OvertimeLoss'], 
+                Shutout=row['Shutout'], 
+                ShootoutGoalsMadeAndAttempted=row['ShootoutGoalsMadeAndAttempted']
+            )
+
+def import_nhl_player_penalties_stats(csv_file_path):
+    with open(csv_file_path, 'r') as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            player_stat = NHL_Player_Penalties_Stats(
+                PlayerName=row['Name'], 
+                GamesPlayed=row['GamesPlayed'], 
+                PenaltyMinutes=row['PenaltyMinutes'], 
+                MajorPenalties=row['MajorPenalties'], 
+                MinorPenalties=row['MinorPenalties']
+            )
+
+def import_nhl_player_scoring_stats(csv_file_path):
+    with open(csv_file_path, 'r') as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            player_stat = NHL_Player_Scoring_Stats(
+                PlayerName=row['Name'], 
+                GamesPlayed=row['GamesPlayed'], 
+                Goals=row['Goals'],
+                Assists=row['Assists'],
+                Points=row['Points'],
+                PlusMinusGoalsScoredForOrAgainstTotal=row['PlusMinusGoalsScoredForOrAganistTotal'],
+                PenaltyMinutes=row['PenaltyMinutes'],
+                PowerPlayGoals=row['PowerPlayGoals'],
+                PowerPlayAssists=row['PowerPlayAssists'],
+                ShortHandedGoals=row['ShortHandedGoals'],
+                OverTimeGoals=row['OverTimeGoals'],
+                GameWinningGoals=row['GameWinningGoals'],
+                ShortHandedAssists=row['ShortHandedAssists'], 
+                ShotsOnGoal=row['ShotsOnGoal'], 
+                ShotsOnGoalPercentage=row['ShotsOnGoalPercentage'],
+                TimeOnIcePerGame=row['TimeOnIcePerGame'],
+                ShootoutGoalsMadeAndAttempted=row['ShootoutGoalsMadeAndAttempted']
+            )
+
 # Calling function with NBA paths
 nba_scoring_csv_file_path = os.path.join(os.path.dirname(__file__), 'NBA', 'NBA-Scoring.csv')
 import_nba_player_scoring_stats(nba_scoring_csv_file_path)
@@ -321,3 +384,14 @@ import_nfl_player_rushing_stats(nfl_rushing_csv_file_path)
 
 nfl_scoring_csv_file_path = os.path.join(os.path.dirname(__file__), 'NFL', 'NFL-Scoring.csv')
 import_nfl_player_scoring_stats(nfl_scoring_csv_file_path)
+
+#Calling The functionwith NHL paths
+
+nhl_goaltending_csv_file_path = os.path.join(os.path.dirname(__file__), 'NHL', 'NHL-Goaltending.csv')
+import_nhl_player_goaltending_stats(nhl_goaltending_csv_file_path)
+
+nhl_penalties_csv_file_path = os.path.join(os.path.dirname(__file__), 'NHL', 'NHL-Penalties.csv')
+import_nhl_player_penalties_stats(nhl_penalties_csv_file_path)
+
+nhl_scoring_csv_file_path = os.path.join(os.path.dirname(__file__), 'NHL', 'NHL-Scoring.csv')
+import_nhl_player_scoring_stats(nhl_scoring_csv_file_path)

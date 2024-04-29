@@ -11,7 +11,7 @@ trs = tbody.find_all("tr")
 
 with open('NHL-Scoring.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
-    header = ['Name', 'GP', 'G', 'A', 'P', '+/-', 'PM', 'PPG', 'PPA', 'SHG', 'OTG', 'GW', 'SHA', 'SOG', 'SOG%', 'TOI/G', 'SGM-A']
+    header = ['PlayerName', 'GamesPlayed', 'Goals', 'Assists', 'Points', 'PlusMinusGoalsScoredForOrAgainstTotal', 'PenaltyMinutes', 'PowerPlayGoals', 'PowerPlayAssists', 'ShortHandedGoals', 'OverTimeGoals', 'GameWinningGoals', 'ShortHandedAssists', 'ShotsOnGoal', 'ShotsOnGoalPercentage', 'TimeOnIcePerGame', 'ShootoutGoalsMadeAndAttempted']
     thewriter.writerow(header)
 
     for tr in trs:
