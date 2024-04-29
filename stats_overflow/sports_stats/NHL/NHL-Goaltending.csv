@@ -1,4 +1,4 @@
-Name,GP,GS,GAA,SV%,GA,SA,W,L,OTL,SO,SGM-A
+PlayerName,GamesPlayed,GamesStarted,GoalsAgainstAverage,SavesPercentage,GoalsAgainst,ShotsAgainst,Wins,Losses,OvertimeLoss,Shutout,ShootoutGoalsMadeAndAttempted
 A. Stolarz,27,24,2.03,.925,51,684,16,7,2,2,3-9
 P. Kochetkov,42,40,2.33,.911,92,1031,23,13,4,4,3-13
 S. Bobrovsky,58,58,2.37,.915,135,1584,36,17,4,6,3-9

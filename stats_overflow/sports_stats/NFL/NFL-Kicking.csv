@@ -1,4 +1,4 @@
-Name,GP,FGM,FGP,LFG,YRDG,EXPM,EXP,KP
+PlayerName,GamesPlayed,FieldGoalsMade,FieldGoalPercentage,LongestFieldGoal,ExtraPointsMade,ExtraPointPercentage,KickingPoints
 B. Aubrey,17,38,94.7,60,0-0,9-9,13-15
 J. Tucker,17,37,86.5,50,0-0,10-10,10-10
 J. Myers,17,42,83.3,55,0-0,8-8,11-12

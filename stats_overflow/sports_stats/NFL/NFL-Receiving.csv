@@ -1,4 +1,4 @@
-Name,GP,REC,YRDS,YRDG,AYR,LR,RTD
+PlayerName,GamesPlayed,Receptions,ReceivingYards,ReceivingYardsPerGame,AverageYardsPerReception,LongestReception,ReceivingTouchdowns
 T. Hill,16,119,1799,112.4,15.1,78,13
 C. Lamb,17,135,1749,102.9,13.0,92,12
 A. St. Brown,16,119,1515,94.7,12.7,70,10

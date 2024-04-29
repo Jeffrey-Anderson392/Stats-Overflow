@@ -1,4 +1,4 @@
-Name,GP,PA,PC,CP,PY,PYG,LC,TD,IN,SCK,YDSL
+PlayerName,GamesPlayed,PassAttempts,PassCompletions,CompletionPercentages,PassingYards,PassingYardsPerGame,LongestCompletion,TouchdownPasses,Interceptions,TimesSacked,SackYardsLost
 T. Tagovailoa,17,560,388,69.3,4624,272.0,78,29,14,29,171
 J. Goff,17,605,407,67.3,4575,269.1,70,30,12,30,197
 D. Prescott,17,590,410,69.5,4516,265.6,92,36,9,39,255
