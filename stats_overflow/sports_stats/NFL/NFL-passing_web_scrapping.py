@@ -8,6 +8,7 @@ result = requests.get(url)
 doc = BeautifulSoup(result.content, "html.parser")
 tbody = doc.find("tbody")
 trs = tbody.find_all("tr")
+id_counter = 1
 
 with open('NFL-Passing.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
@@ -32,11 +33,6 @@ with open('NFL-Passing.csv', 'w', encoding='utf8', newline='') as f:
 
 
         # Write data to CSV file
-        thewriter.writerow([1, PlayerName, GamesPlayed, PassAttempts, PassCompletions, CompletionPercentage, PassingYards, PassingYardsPerGame, LongestCompletion, TouchdownPasses, Interceptions, TimesSacked, SackYardsLost])
+        thewriter.writerow([id_counter, PlayerName, GamesPlayed, PassAttempts, PassCompletions, CompletionPercentage, PassingYards, PassingYardsPerGame, LongestCompletion, TouchdownPasses, Interceptions, TimesSacked, SackYardsLost])
 
-#    PassAttempts[fixed_GP] = fixed_PA
-
-#print(PassAttempts)
-#print(doc.prettify())
-#print(tags)
-#print(tbody)
+        id_counter += 1
