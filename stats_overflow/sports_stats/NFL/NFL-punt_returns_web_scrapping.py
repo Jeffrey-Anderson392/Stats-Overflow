@@ -11,7 +11,7 @@ trs = tbody.find_all("tr")
 
 with open('NFL-Punt_Returns.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
-    header = ['PlayerName', 'GamesPlayed', 'PuntReturns', 'PuntReturnYards', 'AverageYardsPerPuntReturn', 'LongestPuntReturn', 'PuntReturnTouchdowns', 'FairCatches']
+    header = ['ID', 'PlayerName', 'GamesPlayed', 'PuntReturns', 'PuntReturnYards', 'AverageYardsPerPuntReturn', 'LongestPuntReturn', 'PuntReturnTouchdowns', 'FairCatches']
     thewriter.writerow(header)
 
     for tr in trs:
@@ -29,4 +29,4 @@ with open('NFL-Punt_Returns.csv', 'w', encoding='utf8', newline='') as f:
         
 
         # Write data to CSV file
-        thewriter.writerow([PlayerName, GamesPlayed, PuntReturns, PuntReturnYards, AverageYardsPerPuntReturn, LongestPuntReturn, PuntReturnTouchdowns, FairCatches])
+        thewriter.writerow([1, PlayerName, GamesPlayed, PuntReturns, PuntReturnYards, AverageYardsPerPuntReturn, LongestPuntReturn, PuntReturnTouchdowns, FairCatches])

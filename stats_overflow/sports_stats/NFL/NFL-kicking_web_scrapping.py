@@ -11,7 +11,7 @@ trs = tbody.find_all("tr")
 
 with open('NFL-Kicking.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
-    header = ['PlayerName', 'GamesPlayed', 'FieldGoalsMade', 'FieldGoalPercentage', 'LongestFieldGoal', 'ExtraPointsMade', 'ExtraPointPercentage', 'KickingPoints']
+    header = ['ID', 'PlayerName', 'GamesPlayed', 'FieldGoalsMade', 'FieldGoalPercentage', 'LongestFieldGoal', 'ExtraPointsMade', 'ExtraPointPercentage', 'KickingPoints']
     thewriter.writerow(header)
 
     for tr in trs:
@@ -27,4 +27,4 @@ with open('NFL-Kicking.csv', 'w', encoding='utf8', newline='') as f:
         KickingPoints = tds[7].get_text(strip=True)
 
         # Write data to CSV file
-        thewriter.writerow([PlayerName, GamesPlayed, FieldGoalsMade, FieldGoalPercentge, LongestFieldGoal, ExtraPointsMade, ExtraPointPercentage, KickingPoints])
+        thewriter.writerow([1, PlayerName, GamesPlayed, FieldGoalsMade, FieldGoalPercentge, LongestFieldGoal, ExtraPointsMade, ExtraPointPercentage, KickingPoints])

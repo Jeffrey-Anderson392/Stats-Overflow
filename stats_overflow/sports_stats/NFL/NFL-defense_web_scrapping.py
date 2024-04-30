@@ -11,7 +11,7 @@ trs = tbody.find_all("tr")
 
 with open('NFL-Defense.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
-    header = ['PlayerName', 'GamesPlayed', 'SoloTackles', 'AssistedTackles', 'TotalTackles', 'Interceptions', 'InterceptionYards', 'LongestInterceptions', 'InterceptionsReturnedForTouchdowns', 'ForcedFumbles', 'FumbleRecoveries', 'FumbleRecoveriesReturnedForTouchdowns', 'Sacks', 'PassesDefensed', 'Safties']
+    header = ['ID', 'PlayerName', 'GamesPlayed', 'SoloTackles', 'AssistedTackles', 'TotalTackles', 'Interceptions', 'InterceptionYards', 'LongestInterceptions', 'InterceptionsReturnedForTouchdowns', 'ForcedFumbles', 'FumbleRecoveries', 'FumbleRecoveriesReturnedForTouchdowns', 'Sacks', 'PassesDefensed', 'Safties']
     thewriter.writerow(header)
 
     for tr in trs:
@@ -35,4 +35,4 @@ with open('NFL-Defense.csv', 'w', encoding='utf8', newline='') as f:
             Safeties = tds[14].get_text(strip=True)
 
         # Write data to CSV file
-        thewriter.writerow([PlayerName, GamesPlayed, SoloTackles, AssistedTackles, TotalTackles, Interceptions, InterceptionYards, LongestInterception, InterceptionsReturnedForTouchdowns, ForcedFumbles, FumbleRecoveries, FumbleRecoveriesReturnedForTouchdowns, Sacks, PassesDefensed, Safeties])
+        thewriter.writerow([1, PlayerName, GamesPlayed, SoloTackles, AssistedTackles, TotalTackles, Interceptions, InterceptionYards, LongestInterception, InterceptionsReturnedForTouchdowns, ForcedFumbles, FumbleRecoveries, FumbleRecoveriesReturnedForTouchdowns, Sacks, PassesDefensed, Safeties])
