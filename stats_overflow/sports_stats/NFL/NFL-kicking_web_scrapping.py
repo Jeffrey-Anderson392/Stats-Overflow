@@ -8,6 +8,7 @@ result = requests.get(url)
 doc = BeautifulSoup(result.content, "html.parser")
 tbody = doc.find("tbody")
 trs = tbody.find_all("tr")
+id_counter = 1
 
 with open('NFL-Kicking.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
@@ -27,4 +28,6 @@ with open('NFL-Kicking.csv', 'w', encoding='utf8', newline='') as f:
         KickingPoints = tds[7].get_text(strip=True)
 
         # Write data to CSV file
-        thewriter.writerow([1, PlayerName, GamesPlayed, FieldGoalsMade, FieldGoalPercentge, LongestFieldGoal, ExtraPointsMade, ExtraPointPercentage, KickingPoints])
+        thewriter.writerow([id_counter, PlayerName, GamesPlayed, FieldGoalsMade, FieldGoalPercentge, LongestFieldGoal, ExtraPointsMade, ExtraPointPercentage, KickingPoints])
+
+        id_counter += 1

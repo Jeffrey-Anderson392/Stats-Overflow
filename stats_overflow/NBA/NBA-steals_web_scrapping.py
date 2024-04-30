@@ -8,10 +8,11 @@ result = requests.get(url)
 doc = BeautifulSoup(result.content, "html.parser")
 tbody = doc.find("tbody")
 trs = tbody.find_all("tr")
+id_counter = 1
 
-with open('NBA-Blocks.csv', 'w', encoding='utf8', newline='') as f:
+with open('NBA-Steals.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
-    header = ['ID', 'PlayerName', 'GamesPlayed', 'GamesStarted', 'TotalBlocks', 'BlocksPerGame']
+    header = ['ID', 'PlayerName', 'GamesPlayed', 'GamesStarted', 'TotalSteals', 'StealsPerGame']
     thewriter.writerow(header)
 
     for tr in trs:
@@ -21,9 +22,11 @@ with open('NBA-Blocks.csv', 'w', encoding='utf8', newline='') as f:
             PlayerName = tds[0].find("a").get_text(strip=True) if tds[0].find("a") else ''
             GamesPlayed = tds[1].get_text(strip=True)
             GamesStarted = tds[2].get_text(strip=True)
-            TotalBlocks = tds[3].get_text(strip=True)
-            BlocksPerGame = tds[4].get_text(strip=True)
+            TotalSteals = tds[3].get_text(strip=True)
+            StealsPerGame = tds[4].get_text(strip=True)
 
 
         # Write data to CSV file
-        thewriter.writerow([1, PlayerName, GamesPlayed, GamesStarted, TotalBlocks, BlocksPerGame])
+        thewriter.writerow([id_counter, PlayerName, GamesPlayed, GamesStarted, TotalSteals, StealsPerGame])
+
+        id_counter += 1
