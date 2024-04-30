@@ -29,7 +29,7 @@ class NBA_Team(models.Model):
 #NBA Player Models
 
 class NBA_Player_Scoring_Stats(models.Model):
-    id = models.IntegerField(primary_key=True)
+    ID = models.IntegerField(max_length=10)
     PlayerName = models.CharField(max_length=30)
     GamesPlayed = models.CharField(max_length=10)
     GamesStarted = models.CharField(max_length=10)
@@ -46,7 +46,6 @@ class NBA_Player_Scoring_Stats(models.Model):
     FreeThrowPerentage = models.CharField(max_length=10)
 
 class NBA_Player_Assists_Stats(models.Model):
-    id = models.IntegerField(primary_key=True)
     PlayerName = models.CharField(max_length=30)
     GamesPlayed = models.CharField(max_length=10)
     GamesStarted = models.CharField(max_length=10)
@@ -57,7 +56,6 @@ class NBA_Player_Assists_Stats(models.Model):
     AssistsPerTurnover = models.CharField(max_length=10)
 
 class NBA_Player_Blocks_Stats(models.Model):
-    id = models.IntegerField(primary_key=True)
     PlayerName = models.CharField(max_length=30)
     GamesPlayed = models.CharField(max_length=10)
     GamesStarted = models.CharField(max_length=10)
@@ -65,7 +63,6 @@ class NBA_Player_Blocks_Stats(models.Model):
     BlocksPerGame = models.CharField(max_length=10)
 
 class NBA_Player_Fouls_Stats(models.Model):
-    id = models.IntegerField(primary_key=True)
     PlayerName = models.CharField(max_length=30)
     GamesPlayed = models.CharField(max_length=10)
     GamesStarted = models.CharField(max_length=10)
@@ -78,7 +75,6 @@ class NBA_Player_Fouls_Stats(models.Model):
     Disqualifications = models.CharField(max_length=10)
 
 class NBA_Player_Rebounds_Stats(models.Model):
-    id = models.IntegerField(primary_key=True)
     PlayerName = models.CharField(max_length=30)
     GamesPlayed = models.CharField(max_length=10)
     GamesStarted = models.CharField(max_length=10)
@@ -89,7 +85,6 @@ class NBA_Player_Rebounds_Stats(models.Model):
     ReboundsPerGame = models.CharField(max_length=10)
 
 class NBA_Player_Steals_Stats(models.Model):
-    id = models.IntegerField(primary_key=True)
     PlayerName = models.CharField(max_length=30)
     GamesPlayed = models.CharField(max_length=10)
     GamesStarted = models.CharField(max_length=10)
@@ -100,7 +95,6 @@ class NBA_Player_Steals_Stats(models.Model):
 #NFL Player Models
 
 class NFL_Player_Defense_Stats(models.Model):
-    id = models.IntegerField(primary_key=True)
     PlayerName = models.CharField(max_length=30)
     GamesPlayed = models.CharField(max_length=10)
     SoloTackles = models.CharField(max_length=10)
@@ -118,7 +112,6 @@ class NFL_Player_Defense_Stats(models.Model):
     Safeties = models.CharField(max_length=10)
 
 class NFL_Player_Kick_Returns_Stats(models.Model):
-    id = models.IntegerField(primary_key=True)
     PlayerName = models.CharField(max_length=30)
     GamesPlayed = models.CharField(max_length=10)
     KickOffReturns = models.CharField(max_length=10)
@@ -128,7 +121,6 @@ class NFL_Player_Kick_Returns_Stats(models.Model):
     KickOffReturnTouchdowns = models.CharField(max_length=10)
 
 class NFL_Player_Kicking_Stats(models.Model):
-    id = models.IntegerField(primary_key=True)
     PlayerName = models.CharField(max_length=30)
     GamesPlayed = models.CharField(max_length=10)
     FieldGoalsMade = models.CharField(max_length=10)
@@ -139,7 +131,6 @@ class NFL_Player_Kicking_Stats(models.Model):
     KickingPoints = models.CharField(max_length=10)
 
 class NFL_Player_Passing_Stats(models.Model):
-    id = models.IntegerField(primary_key=True)
     PlayerName = models.CharField(max_length=30)
     GamesPlayed = models.CharField(max_length=10)
     PassAttempts = models.CharField(max_length=10)
@@ -154,7 +145,6 @@ class NFL_Player_Passing_Stats(models.Model):
     SackYardsLost = models.CharField(max_length=10)
 
 class NFL_Player_Punt_Returns_Stats(models.Model):
-    id = models.IntegerField(primary_key=True)
     PlayerName = models.CharField(max_length=30)
     GamesPlayed = models.CharField(max_length=10)
     PuntReturns = models.CharField(max_length=10)
@@ -165,7 +155,6 @@ class NFL_Player_Punt_Returns_Stats(models.Model):
     FairCatches = models.CharField(max_length=10)
 
 class NFL_Player_Punting_Stats(models.Model):
-    id = models.IntegerField(primary_key=True)
     PlayerName = models.CharField(max_length=30)
     GamesPlayed = models.CharField(max_length=10)
     Punts = models.CharField(max_length=10)
@@ -182,7 +171,6 @@ class NFL_Player_Punting_Stats(models.Model):
     PuntsBlocked = models.CharField(max_length=10)
 
 class NFL_Player_Receiving_Stats(models.Model):
-    id = models.IntegerField(primary_key=True)
     PlayerName = models.CharField(max_length=30)
     GamesPlayed = models.CharField(max_length=10)
     Receptions = models.CharField(max_length=10)
@@ -193,7 +181,6 @@ class NFL_Player_Receiving_Stats(models.Model):
     ReceivingTouchdowns = models.CharField(max_length=10)
 
 class NFL_Player_Rushing_Stats(models.Model):
-    id = models.IntegerField(primary_key=True)
     PlayerName = models.CharField(max_length=30)
     GamesPlayed = models.CharField(max_length=10)
     RushingAttempts = models.CharField(max_length=10)
@@ -204,7 +191,6 @@ class NFL_Player_Rushing_Stats(models.Model):
     LongestRush = models.CharField(max_length=10)
 
 class NFL_Player_Scoring_Stats(models.Model):
-    id = models.IntegerField(primary_key=True)
     PlayerName = models.CharField(max_length=30)
     GamesPlayed = models.CharField(max_length=10)
     RushingTouchdowns = models.CharField(max_length=10)
@@ -224,7 +210,6 @@ class NFL_Player_Scoring_Stats(models.Model):
 #NHL Models
 
 class NHL_Player_Goaltending_Stats(models.Model):
-    id = models.IntegerField(primary_key=True)
     PlayerName = models.CharField(max_length=30)
     GamesPlayed = models.CharField(max_length=10)
     GamesStarted = models.CharField(max_length=10)
@@ -239,7 +224,6 @@ class NHL_Player_Goaltending_Stats(models.Model):
     ShootoutGoalsMadeAndAttempted = models.CharField(max_length=10)
 
 class NHL_Player_Penalties_Stats(models.Model):
-    id = models.IntegerField(primary_key=True)
     PlayerName = models.CharField(max_length=30)
     GamesPlayed = models.CharField(max_length=10)
     PenaltyMinutes = models.CharField(max_length=10)
@@ -247,7 +231,6 @@ class NHL_Player_Penalties_Stats(models.Model):
     MinorPenalties = models.CharField(max_length=10)
 
 class NHL_Player_Scoring_Stats(models.Model):
-    id = models.IntegerField(primary_key=True)
     PlayerName = models.CharField(max_length=30)
     GamesPlayed = models.CharField(max_length=10)
     Goals = models.CharField(max_length=10)
