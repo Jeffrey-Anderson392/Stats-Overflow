@@ -1,26 +1,34 @@
 import os 
 import csv
+import django
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'stats_overflow.stats_overflow.settings')
+django.setup()
+
+
 #NBA imports
-from stats_overflow.sports_stats.models import NBA_Player_Scoring_Stats
-from stats_overflow.sports_stats.models import NBA_Player_Steals_Stats
-from stats_overflow.sports_stats.models import NBA_Player_Fouls_Stats
-from stats_overflow.sports_stats.models import NBA_Player_Rebounds_Stats
-from stats_overflow.sports_stats.models import NBA_Player_Blocks_Stats
-from stats_overflow.sports_stats.models import NBA_Player_Assists_Stats
+from sports_stats.models import NBA_Player_Scoring_Stats
+from sports_stats.models import NBA_Player_Steals_Stats
+from sports_stats.models import NBA_Player_Fouls_Stats
+from sports_stats.models import NBA_Player_Rebounds_Stats
+from sports_stats.models import NBA_Player_Blocks_Stats
+from sports_stats.models import NBA_Player_Assists_Stats
 #NFL imports
-from stats_overflow.sports_stats.models import NFL_Player_Defense_Stats
-from stats_overflow.sports_stats.models import NFL_Player_Kick_Returns_Stats
-from stats_overflow.sports_stats.models import NFL_Player_Kicking_Stats
-from stats_overflow.sports_stats.models import NFL_Player_Passing_Stats
-from stats_overflow.sports_stats.models import NFL_Player_Punt_Returns_Stats
-from stats_overflow.sports_stats.models import NFL_Player_Punting_Stats
-from stats_overflow.sports_stats.models import NFL_Player_Receiving_Stats
-from stats_overflow.sports_stats.models import NFL_Player_Rushing_Stats
-from stats_overflow.sports_stats.models import NFL_Player_Scoring_Stats
+from sports_stats.models import NFL_Player_Defense_Stats
+from sports_stats.models import NFL_Player_Kick_Returns_Stats
+from sports_stats.models import NFL_Player_Kicking_Stats
+from sports_stats.models import NFL_Player_Passing_Stats
+from sports_stats.models import NFL_Player_Punt_Returns_Stats
+from sports_stats.models import NFL_Player_Punting_Stats
+from sports_stats.models import NFL_Player_Receiving_Stats
+from sports_stats.models import NFL_Player_Rushing_Stats
+from sports_stats.models import NFL_Player_Scoring_Stats
 #NHL imports
-from stats_overflow.sports_stats.models import NHL_Player_Goaltending_Stats
-from stats_overflow.sports_stats.models import NHL_Player_Penalties_Stats
-from stats_overflow.sports_stats.models import NHL_Player_Scoring_Stats
+from sports_stats.models import NHL_Player_Goaltending_Stats
+from sports_stats.models import NHL_Player_Penalties_Stats
+from sports_stats.models import NHL_Player_Scoring_Stats
+
+
 
 
 # NBA import data
