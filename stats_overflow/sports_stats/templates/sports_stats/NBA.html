@@ -7,18 +7,7 @@
 {% block content %}
     <h1>NBA Stats</h1>
     <p>Your user ID is: {{ user.id }}</p>
-    {% if user.is_authenticated %}
-        <p>Hello, {{ user.username }}!</p>
-        <p><a href="{% url 'logout' %}">Logout</a></p>
     
-    
-    
-    
-    
-    
-    {% else %}
-        {% include 'accounts/login.html' %}
-    {% endif %}
     
 
 {% endblock %}
