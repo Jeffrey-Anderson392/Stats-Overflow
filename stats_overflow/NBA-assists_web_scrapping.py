@@ -10,7 +10,7 @@ tbody = doc.find("tbody")
 trs = tbody.find_all("tr")
 id_counter = 1
 
-with open('NBA-Assists-Turnovers.csv', 'w', encoding='utf8', newline='') as f:
+with open('NBA-Assists.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
     header = ['ID', 'PlayerName', 'GamesPlayed', 'GamesStarted', 'TotalAssists', 'AssistsPerGame', 'Turnover', 'TurnoversPerGame', 'AssistsPerTurnover']
     thewriter.writerow(header)
