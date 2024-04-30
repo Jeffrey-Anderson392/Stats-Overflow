@@ -29,6 +29,7 @@ class NBA_Team(models.Model):
 #NBA Player Models
 
 class NBA_Player_Scoring_Stats(models.Model):
+    ID = models.IntegerField(max_length=10)
     PlayerName = models.CharField(max_length=30)
     GamesPlayed = models.CharField(max_length=10)
     GamesStarted = models.CharField(max_length=10)
