@@ -1,1 +1,28 @@
 {% extends 'sports_stats/base.html' %}
+
+{% block title %}
+    NFL Stats
+{% endblock %}
+
+{% block content %}
+    
+    {% if team_list %}
+        <table class="table table-striped">
+            <thead class="table-dark">
+                <th>Team</th>
+                <th>Conference</th>
+            </thead>
+            {% for team in team_list %}
+                <tr>
+                    <td>{{ team.team_name }}</td>
+                    <td>{{ team.team_conference }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>There are no teams.</p>
+    {% endif %}
+        
+
+
+{% endblock %}
