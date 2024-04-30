@@ -11,13 +11,14 @@ trs = tbody.find_all("tr")
 
 with open('NBA-Scoring.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
-    header = ['Name', 'GamesPlayed', 'GamesStarted', 'MinutesPerGame', 'PointsPerGame', 'FieldGoalsMade', 'FieldGoalsAttempted', 'FieldGoalPercentage', 'ThreeFieldGoalsMade', 'ThreeFieldGoalsAttempted', 'ThreeFieldGoalPercentage', 'FreeThrowsMade', 'FreeThrowsAttempted', 'FreeThrowsPercentage']
+    header = ['ID', 'Name', 'GamesPlayed', 'GamesStarted', 'MinutesPerGame', 'PointsPerGame', 'FieldGoalsMade', 'FieldGoalsAttempted', 'FieldGoalPercentage', 'ThreePointFieldGoalsMade', 'ThreePointFieldGoalsAttempted', 'ThreePointFieldGoalPercentage', 'FreeThrowsMade', 'FreeThrowsAttempted', 'FreeThrowsPercentage']
     thewriter.writerow(header)
 
     for tr in trs:
         tds = tr.find_all("td")
         if tds:
             # Extract data from each row
+            ID = 1
             PlayerName = tds[0].find("a").get_text(strip=True) if tds[0].find("a") else ''
             GamesPlayed = tds[1].get_text(strip=True)
             GamesStarted = tds[2].get_text(strip=True)
@@ -35,4 +36,4 @@ with open('NBA-Scoring.csv', 'w', encoding='utf8', newline='') as f:
 
 
         # Write data to CSV file
-        thewriter.writerow([PlayerName, GamesPlayed, GamesStarted, MinutesPerGame, PointsPerGame, FieldGoalsMade, FieldGoalsAttempted, FieldGoalPercentage, ThreePointFieldGoalsMade, ThreePointFieldGoalsAttempted, ThreePointFieldGoalPercentage, FreeThrowsMade, FreeThrowsAttempted, FreeThrowPerentage])
+        thewriter.writerow([ID, PlayerName, GamesPlayed, GamesStarted, MinutesPerGame, PointsPerGame, FieldGoalsMade, FieldGoalsAttempted, FieldGoalPercentage, ThreePointFieldGoalsMade, ThreePointFieldGoalsAttempted, ThreePointFieldGoalPercentage, FreeThrowsMade, FreeThrowsAttempted, FreeThrowPerentage])
