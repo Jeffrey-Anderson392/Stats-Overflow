@@ -11,7 +11,7 @@ trs = tbody.find_all("tr")
 
 with open('NFL-Punting.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
-    header = ['PlayerName', 'GamesPlayed', 'Punts', 'PuntingYards', 'LongestPunts', 'AverageYardsPerPunt', 'NetPuntingAverage', 'PuntsInside20', 'Touchbacks', 'PuntsResultingInAFairCatch', 'PuntsReturned', 'PuntReturnYardsAgainst', 'AverageYardsPerPuntReturn', 'PuntsBlocked']
+    header = ['ID', 'PlayerName', 'GamesPlayed', 'Punts', 'PuntingYards', 'LongestPunts', 'AverageYardsPerPunt', 'NetPuntingAverage', 'PuntsInside20', 'Touchbacks', 'PuntsResultingInAFairCatch', 'PuntsReturned', 'PuntReturnYardsAgainst', 'AverageYardsPerPuntReturn', 'PuntsBlocked']
     thewriter.writerow(header)
 
     for tr in trs:
@@ -36,4 +36,4 @@ with open('NFL-Punting.csv', 'w', encoding='utf8', newline='') as f:
         
 
         # Write data to CSV file
-        thewriter.writerow([PlayerName, GamesPlayed, Punts, PuntingYards, LongestPunts, AverageYardsPerPunt, NetPuntingAverage, PuntsInside20, Touchbacks, PuntsResultingInAFairCatch, PuntsReturned, PuntReturnYardsAgainst, AverageYardsPerPuntReturn, PuntsBlocked])
+        thewriter.writerow([1, PlayerName, GamesPlayed, Punts, PuntingYards, LongestPunts, AverageYardsPerPunt, NetPuntingAverage, PuntsInside20, Touchbacks, PuntsResultingInAFairCatch, PuntsReturned, PuntReturnYardsAgainst, AverageYardsPerPuntReturn, PuntsBlocked])

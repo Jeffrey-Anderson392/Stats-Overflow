@@ -18,7 +18,6 @@ with open('NBA-Scoring.csv', 'w', encoding='utf8', newline='') as f:
         tds = tr.find_all("td")
         if tds:
             # Extract data from each row
-            ID = 1
             PlayerName = tds[0].find("a").get_text(strip=True) if tds[0].find("a") else ''
             GamesPlayed = tds[1].get_text(strip=True)
             GamesStarted = tds[2].get_text(strip=True)
@@ -36,4 +35,4 @@ with open('NBA-Scoring.csv', 'w', encoding='utf8', newline='') as f:
 
 
         # Write data to CSV file
-        thewriter.writerow([ID, PlayerName, GamesPlayed, GamesStarted, MinutesPerGame, PointsPerGame, FieldGoalsMade, FieldGoalsAttempted, FieldGoalPercentage, ThreePointFieldGoalsMade, ThreePointFieldGoalsAttempted, ThreePointFieldGoalPercentage, FreeThrowsMade, FreeThrowsAttempted, FreeThrowPerentage])
+        thewriter.writerow([1, PlayerName, GamesPlayed, GamesStarted, MinutesPerGame, PointsPerGame, FieldGoalsMade, FieldGoalsAttempted, FieldGoalPercentage, ThreePointFieldGoalsMade, ThreePointFieldGoalsAttempted, ThreePointFieldGoalPercentage, FreeThrowsMade, FreeThrowsAttempted, FreeThrowPerentage])

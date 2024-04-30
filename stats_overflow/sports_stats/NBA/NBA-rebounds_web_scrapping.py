@@ -11,7 +11,7 @@ trs = tbody.find_all("tr")
 
 with open('NBA-Rebounds.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
-    header = ['PlayerName', 'GamesPlayed', 'GamesStarted', 'MinutesPerGame', 'OffensiveRebounds', 'DeffensiveRebounds', 'TotalRebounds', 'ReboundsPerGame']
+    header = ['ID', 'PlayerName', 'GamesPlayed', 'GamesStarted', 'MinutesPerGame', 'OffensiveRebounds', 'DeffensiveRebounds', 'TotalRebounds', 'ReboundsPerGame']
     thewriter.writerow(header)
 
     for tr in trs:
@@ -29,4 +29,4 @@ with open('NBA-Rebounds.csv', 'w', encoding='utf8', newline='') as f:
 
 
         # Write data to CSV file
-        thewriter.writerow([PlayerName, GamesPlayed, GamesStarted, MinutesPerGame, OffensiveRebounds, DeffensiveRebounds, TotalRebounds, ReboundsPerGame])
+        thewriter.writerow([1, PlayerName, GamesPlayed, GamesStarted, MinutesPerGame, OffensiveRebounds, DeffensiveRebounds, TotalRebounds, ReboundsPerGame])

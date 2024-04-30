@@ -11,7 +11,7 @@ trs = tbody.find_all("tr")
 
 with open('NHL-Goaltending.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
-    header = ['PlayerName', 'GamesPlayed', 'GamesStarted', 'GoalsAgainstAverage', 'SavesPercentage', 'GoalsAgainst', 'ShotsAgainst', 'Wins', 'Losses', 'OvertimeLoss', 'Shutout', 'ShootoutGoalsMadeAndAttempted']
+    header = ['ID', 'PlayerName', 'GamesPlayed', 'GamesStarted', 'GoalsAgainstAverage', 'SavesPercentage', 'GoalsAgainst', 'ShotsAgainst', 'Wins', 'Losses', 'OvertimeLoss', 'Shutout', 'ShootoutGoalsMadeAndAttempted']
     thewriter.writerow(header)
 
     for tr in trs:
@@ -32,4 +32,4 @@ with open('NHL-Goaltending.csv', 'w', encoding='utf8', newline='') as f:
             ShootoutGoalsMadeAndAttempted = tds[11].get_text(strip=True)
 
         # Write data to CSV file
-        thewriter.writerow([PlayerName, GamesPlayed, GamesStarted, GoalsAgainstAverage, SavesPercentage, GoalsAgainst, ShotsAgainst, Wins, Losses, OvertimeLoss, Shutout, ShootoutGoalsMadeAndAttempted])
+        thewriter.writerow([1, PlayerName, GamesPlayed, GamesStarted, GoalsAgainstAverage, SavesPercentage, GoalsAgainst, ShotsAgainst, Wins, Losses, OvertimeLoss, Shutout, ShootoutGoalsMadeAndAttempted])

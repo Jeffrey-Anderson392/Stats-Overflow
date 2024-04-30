@@ -11,7 +11,7 @@ trs = tbody.find_all("tr")
 
 with open('NFL-scoring.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
-    header = ['PlayerName','GamesPlayed', 'RushingTouchdowns', 'ReceivingTouchdowns', 'PuntReturnTouchdowns', 'KickOffReturnedForTouchdowns', 'InterceptionsReturnedForTouchdowns', 'FumbleRecoveriesReturnedForTouchdowns', 'FieldGoals', 'ExtraPoints', 'Safeties', 'TwoPointConversions', 'TotalPoints', 'PointsPerGame']
+    header = ['ID', 'PlayerName','GamesPlayed', 'RushingTouchdowns', 'ReceivingTouchdowns', 'PuntReturnTouchdowns', 'KickOffReturnedForTouchdowns', 'InterceptionsReturnedForTouchdowns', 'FumbleRecoveriesReturnedForTouchdowns', 'FieldGoals', 'ExtraPoints', 'Safeties', 'TwoPointConversions', 'TotalPoints', 'PointsPerGame']
     thewriter.writerow(header)
 
     for tr in trs:
@@ -33,4 +33,4 @@ with open('NFL-scoring.csv', 'w', encoding='utf8', newline='') as f:
         PointsPerGame = tds[13].get_text(strip=True)
 
         # Write data to CSV file
-        thewriter.writerow([PlayerName, GamesPlayed, RushingTouchdowns, ReceivingTouchdowns, PuntReturnTouchdowns, KickOffReturnedTouchdowns, InterceptionsReturnedForTouchdowns, FumbleRecoveriesReturnedForTouchdowns, FieldGoals, ExtraPoints, Safeties, TwoPointConversions, TotalPoints, PointsPerGame])
+        thewriter.writerow([1, PlayerName, GamesPlayed, RushingTouchdowns, ReceivingTouchdowns, PuntReturnTouchdowns, KickOffReturnedTouchdowns, InterceptionsReturnedForTouchdowns, FumbleRecoveriesReturnedForTouchdowns, FieldGoals, ExtraPoints, Safeties, TwoPointConversions, TotalPoints, PointsPerGame])
