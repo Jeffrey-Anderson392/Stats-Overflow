@@ -11,7 +11,7 @@ trs = tbody.find_all("tr")
 
 with open('NBA-Scoring.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
-    header = ['Name', 'GamesPlayed', 'GamesStarted', 'MinutesPerGame', 'PointsPerGame', 'FieldGoalsMade', 'FieldGoalsAttempted', 'FieldGoalPercentage', 'ThreeFieldGoalsMade', 'ThreeFieldGoalsAttempted', 'ThreeFieldGoalPercentage', 'FreeThrowsMade', 'FreeThrowsAttempted', 'FreeThrowsPercentage']
+    header = ['Name', 'GamesPlayed', 'GamesStarted', 'MinutesPerGame', 'PointsPerGame', 'FieldGoalsMade', 'FieldGoalsAttempted', 'FieldGoalPercentage', 'ThreePointFieldGoalsMade', 'ThreePointFieldGoalsAttempted', 'ThreePointFieldGoalPercentage', 'FreeThrowsMade', 'FreeThrowsAttempted', 'FreeThrowsPercentage']
     thewriter.writerow(header)
 
     for tr in trs:
