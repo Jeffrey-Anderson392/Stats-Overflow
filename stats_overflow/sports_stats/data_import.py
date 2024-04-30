@@ -2,7 +2,7 @@ import os
 import csv
 import django
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'stats_overflow.stats_overflow.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'stats_overflow.settings')
 django.setup()
 
 
