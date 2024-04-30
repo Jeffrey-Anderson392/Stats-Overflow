@@ -8,10 +8,11 @@ result = requests.get(url)
 doc = BeautifulSoup(result.content, "html.parser")
 tbody = doc.find("tbody")
 trs = tbody.find_all("tr")
+id_counter = 1
 
 with open('NHL-Goaltending.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
-    header = ['PlayerName', 'GamesPlayed', 'GamesStarted', 'GoalsAgainstAverage', 'SavesPercentage', 'GoalsAgainst', 'ShotsAgainst', 'Wins', 'Losses', 'OvertimeLoss', 'Shutout', 'ShootoutGoalsMadeAndAttempted']
+    header = ['ID', 'PlayerName', 'GamesPlayed', 'GamesStarted', 'GoalsAgainstAverage', 'SavesPercentage', 'GoalsAgainst', 'ShotsAgainst', 'Wins', 'Losses', 'OvertimeLoss', 'Shutout', 'ShootoutGoalsMadeAndAttempted']
     thewriter.writerow(header)
 
     for tr in trs:
@@ -32,4 +33,6 @@ with open('NHL-Goaltending.csv', 'w', encoding='utf8', newline='') as f:
             ShootoutGoalsMadeAndAttempted = tds[11].get_text(strip=True)
 
         # Write data to CSV file
-        thewriter.writerow([PlayerName, GamesPlayed, GamesStarted, GoalsAgainstAverage, SavesPercentage, GoalsAgainst, ShotsAgainst, Wins, Losses, OvertimeLoss, Shutout, ShootoutGoalsMadeAndAttempted])
+        thewriter.writerow([id_counter, PlayerName, GamesPlayed, GamesStarted, GoalsAgainstAverage, SavesPercentage, GoalsAgainst, ShotsAgainst, Wins, Losses, OvertimeLoss, Shutout, ShootoutGoalsMadeAndAttempted])
+
+        id_counter += 1
