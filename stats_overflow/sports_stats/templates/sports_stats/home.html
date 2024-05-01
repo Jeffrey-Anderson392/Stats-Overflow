@@ -1,12 +1,84 @@
 {% extends 'sports_stats/base.html' %}
+{% load static %}
 
 {% block title %}
     Home
 {% endblock %}
 
 {% block content %}
-    <h1>Welcome {{ user.username }} to Stats Overflow!</h1>
-    <!--<p>Your user ID is: {{ user.id }}</p>-->
+    <header class="bg-primary text-white text-center p-5">
+        <h1>Welcome to Stats Overflow</h1>
+        <p>The ultimate hub for sports and esports stats and game highlights</p>
+    </header>
+
+    <div class="container mt-5">
+        <h2 class="mb-3">Recent Games</h2>
+        <div id="gameCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://via.placeholder.com/800x400?text=Recent+Game+1" class="d-block w-100" alt="Recent game 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://via.placeholder.com/800x400?text=Recent+Game+2" class="d-block w-100" alt="Recent game 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://via.placeholder.com/800x400?text=Recent+Game+3" class="d-block w-100" alt="Recent game 3">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#gameCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#gameCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="{%static 'sports_stats/images/football.jpg'%}" class="card-img-top" alt="NFL">
+                    <div class="card-body">
+                        <h5 class="card-title">NFL</h5>
+                        <p class="card-text">Check out the latest stats and game highlights from the National Football League.</p>
+                        <a href="{% url 'NFL' %}" class="btn btn-primary">Go to NFL</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="{%static 'sports_stats/images/hockey.jpg'%}" class="card-img-top" alt="NHL">
+                    <div class="card-body">
+                        <h5 class="card-title">NHL</h5>
+                        <p class="card-text">Explore scores, stats, and updates from the National Hockey League.</p>
+                        <a href="{% url 'NHL' %}" class="btn btn-primary">Go to NHL</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="{%static 'sports_stats/images/basketball.jpg'%}" class="card-img-top" alt="NBA">
+                    <div class="card-body">
+                        <h5 class="card-title">NBA</h5>
+                        <p class="card-text">Get the latest stats and highlights from the National Basketball Association.</p>
+                        <a href="{% url 'NBA' %}" class="btn btn-primary">Go to NBA</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="{%static 'sports_stats/images/valorant.jpg'%}" class="card-img-top" alt="Valorant">
+                    <div class="card-body">
+                        <h5 class="card-title">Valorant</h5>
+                        <p class="card-text">Discover the latest match results and analytics from the world of Valorant esports.</p>
+                        <a href="{% url 'Valorant' %}" class="btn btn-primary">Go to Valorant</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     
     
    
