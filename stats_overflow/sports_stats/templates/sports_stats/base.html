@@ -24,7 +24,9 @@
         {% endblock %}
         <!--<p><a href="{% url 'logout' %}">Logout</a></p>-->
       {% else %}
-        <h1>Welcome to Stats Overflow</h1>
+        <div class="welcome">
+          <h1>Welcome to Stats Overflow</h1>
+        </div>
         {% include 'accounts/login.html' %}
       {% endif %}
       

@@ -1,3 +1,9 @@
+/* Puts the right amount of space for the welcome page */
+.welcome {
+    margin-top: 100px;
+    text-align: center;
+}
+
 #page-container {
     position: relative;
     min-height: 100vh;
@@ -12,4 +18,8 @@ nav {
 
 #grad {
     background-image: linear-gradient(to bottom right, blue, rgb(209, 247, 179));
+}
+
+#gameCarousel {
+    margin-bottom: 5rem;
 }
