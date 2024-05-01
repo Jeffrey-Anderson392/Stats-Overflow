@@ -35,6 +35,29 @@ def home(request):
     
     return render(request, 'sports_stats/home.html', {})
 
+def NFL_Player_View(request, name):
+    defense = NFL_Player_Defense_Stats.objects.get(PlayerName=name)
+    kick_returns = NFL_Player_Kick_Returns_Stats.objects.get(PlayerName=name)
+    kicking = NFL_Player_Kicking_Stats.objects.get(PlayerName=name)
+    passing = NFL_Player_Passing_Stats.objects.get(PlayerName=name)
+    punt_returns = NFL_Player_Punt_Returns_Stats.objects.get(PlayerName=name)
+    punting = NFL_Player_Punting_Stats.objects.get(PlayerName=name)
+    receiving = NFL_Player_Receiving_Stats.objects.get(PlayerName=name)
+    rushing = NFL_Player_Rushing_Stats.objects.get(PlayerName=name)
+    scoring = NFL_Player_Scoring_Stats.objects.get(PlayerName=name)
+    context = {
+        'defense': defense,
+        'kick_returns': kick_returns,
+        'kicking': kicking,
+        'passing': passing,
+        'punt_returns': punt_returns,
+        'punting': punting,
+        'receiving': receiving,
+        'rushing': rushing,
+        'scoring': scoring,
+    }
+    return render(request, 'sports_stats/NFL_Player.html', context)
+
 
 def NFL(request):
     nfl_team_list = NFL_Team.objects.all()
