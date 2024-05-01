@@ -14,7 +14,7 @@ id_counter = 1
 
 with open('NBA-Fouls-Minutes.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
-    header = ['PlayerName', 'GamesPlayed', 'GamesStarted', 'MinutesPerGame', 'TotalPersonalFouls', 'PersonalFoulsPerGame', 'FlagrantFouls', 'TechnicalFouls', 'Ejections', 'Disqualifications']
+    header = ['ID', 'PlayerName', 'GamesPlayed', 'GamesStarted', 'MinutesPerGame', 'TotalPersonalFouls', 'PersonalFoulsPerGame', 'FlagrantFouls', 'TechnicalFouls', 'Ejections', 'Disqualifications']
     thewriter.writerow(header)
 
     for tr in trs:

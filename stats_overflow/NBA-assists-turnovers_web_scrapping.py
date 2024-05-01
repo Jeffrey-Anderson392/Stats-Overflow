@@ -14,7 +14,7 @@ id_counter =1
 
 with open('NBA-Assists-Turnovers.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
-    header = ['PlayerName', 'GamesPlayed', 'GamesStarted', 'TotalAssists', 'AssistsPerGame', 'Turnover', 'TurnoversPerGame', 'AssistsPerTurnover']
+    header = ['ID', 'PlayerName', 'GamesPlayed', 'GamesStarted', 'TotalAssists', 'AssistsPerGame', 'Turnover', 'TurnoversPerGame', 'AssistsPerTurnover']
     thewriter.writerow(header)
 
 

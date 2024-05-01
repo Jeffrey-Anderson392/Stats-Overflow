@@ -14,7 +14,7 @@ id_counter += 1
 
 with open('NHL-Scoring.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
-    header = ['PlayerName', 'GamesPlayed', 'Goals', 'Assists', 'Points', 'PlusMinusGoalsScoredForOrAgainstTotal', 'PenaltyMinutes', 'PowerPlayGoals', 'PowerPlayAssists', 'ShortHandedGoals', 'OverTimeGoals', 'GameWinningGoals', 'ShortHandedAssists', 'ShotsOnGoal', 'ShotsOnGoalPercentage', 'TimeOnIcePerGame', 'ShootoutGoalsMadeAndAttempted']
+    header = ['ID', 'PlayerName', 'GamesPlayed', 'Goals', 'Assists', 'Points', 'PlusMinusGoalsScoredForOrAgainstTotal', 'PenaltyMinutes', 'PowerPlayGoals', 'PowerPlayAssists', 'ShortHandedGoals', 'OverTimeGoals', 'GameWinningGoals', 'ShortHandedAssists', 'ShotsOnGoal', 'ShotsOnGoalPercentage', 'TimeOnIcePerGame', 'ShootoutGoalsMadeAndAttempted']
     thewriter.writerow(header)
 
     for tr in trs:

@@ -14,7 +14,7 @@ id_counter = 1
 
 with open('NBA-Rebounds.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
-    header = ['PlayerName', 'GamesPlayed', 'GamesStarted', 'MinutesPerGame', 'OffensiveRebounds', 'DeffensiveRebounds', 'TotalRebounds', 'ReboundsPerGame']
+    header = ['ID', 'PlayerName', 'GamesPlayed', 'GamesStarted', 'MinutesPerGame', 'OffensiveRebounds', 'DeffensiveRebounds', 'TotalRebounds', 'ReboundsPerGame']
     thewriter.writerow(header)
 
     for tr in trs:

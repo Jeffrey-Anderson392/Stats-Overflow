@@ -13,7 +13,7 @@ id_counter = 1
 
 with open('NBA-Blocks.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
-    header = ['PlayerName', 'GamesPlayed', 'GamesStarted', 'TotalBlocks', 'BlocksPerGame']
+    header = ['ID', 'PlayerName', 'GamesPlayed', 'GamesStarted', 'TotalBlocks', 'BlocksPerGame']
     thewriter.writerow(header)
 
     for tr in trs:
