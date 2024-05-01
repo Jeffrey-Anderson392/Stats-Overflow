@@ -98,10 +98,64 @@ def NFL(request):
     })
 
 def NBA(request):
-    return render(request, 'sports_stats/NBA.html', {})
+    nba_team_list = NBA_Team.objects.all()
+    stats_categories = [
+        'Team List', 'Scoring Stats', 'Steals Stats', 'Fouls Stats',
+        'Rebounds Stats', 'Blocks Stats', 'Assists Stats'
+    ]
+    category_models = {
+        'Team List': 'NBA_Team',
+        'Scoring Stats': 'NBA_Player_Scoring_Stats',
+        'Steals Stats': 'NBA_Player_Steals_Stats',
+        'Fouls Stats': 'NBA_Player_Fouls_Stats',
+        'Rebounds Stats': 'NBA_Player_Rebounds_Stats',
+        'Blocks Stats': 'NBA_Player_Blocks_Stats',
+        'Assists Stats': 'NBA_Player_Assists_Stats',
+    }
+    selected_category = request.GET.get('category')
+    stats_data = None
+    field_names = []
+    if selected_category:
+        model_name = category_models[selected_category]
+        model = apps.get_model('sports_stats', model_name) 
+        stats_data = model.objects.all()
+        field_names = [field.name for field in model._meta.fields]
+    
+    return render(request, 'sports_stats/NBA.html', {
+        "team_list": nba_team_list, 
+        "stats_categories": stats_categories,
+        "selected_category": selected_category,
+        "stats_data": stats_data,
+        "field_names": field_names
+    })
 
 def NHL(request):
-    return render(request, 'sports_stats/NHL.html', {})
+    nhl_team_list = NHL_Team.objects.all()
+    stats_categories = [
+        'Team List', 'Goaltending Stats', 'Penalties Stats', 'Scoring Stats'
+    ]
+    category_models = {
+        'Team List': 'NHL_Team',
+        'Goaltending Stats': 'NHL_Player_Goaltending_Stats',
+        'Penalties Stats': 'NHL_Player_Penalties_Stats',
+        'Scoring Stats': 'NHL_Player_Scoring_Stats',
+    }
+    selected_category = request.GET.get('category')
+    stats_data = None
+    field_names = []
+    if selected_category:
+        model_name = category_models[selected_category]
+        model = apps.get_model('sports_stats', model_name) 
+        stats_data = model.objects.all()
+        field_names = [field.name for field in model._meta.fields]
+    
+    return render(request, 'sports_stats/NHL.html', {
+        "team_list": nhl_team_list, 
+        "stats_categories": stats_categories,
+        "selected_category": selected_category,
+        "stats_data": stats_data,
+        "field_names": field_names
+    })
 
 def Valorant(request):
     return render(request, 'sports_stats/Valorant.html', {})
