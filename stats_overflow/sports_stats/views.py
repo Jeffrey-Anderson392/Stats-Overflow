@@ -35,6 +35,8 @@ def home(request):
     
     return render(request, 'sports_stats/home.html', {})
 
+
+# This is where the players are viewed
 def NFL_Player_View(request, name):
     defense = NFL_Player_Defense_Stats.objects.get(PlayerName=name)
     kick_returns = NFL_Player_Kick_Returns_Stats.objects.get(PlayerName=name)
@@ -58,6 +60,37 @@ def NFL_Player_View(request, name):
     }
     return render(request, 'sports_stats/NFL_Player.html', context)
 
+def NHL_Player_View(request, name):
+    goaltending = NHL_Player_Goaltending_Stats.objects.get(PlayerName=name)
+    penalties = NHL_Player_Penalties_Stats.objects.get(PlayerName=name)
+    scoring = NHL_Player_Scoring_Stats.objects.get(PlayerName=name)
+    context = {
+        'goaltending': goaltending,
+        'penalties': penalties,
+       'scoring': scoring,
+    }
+    return render(request, 'sports_stats/NHL_Player.html', context)
+
+def NBA_Player_View(request, name):
+    Scoring = NBA_Player_Scoring_Stats.objects.get(PlayerName=name)
+    Steals = NBA_Player_Steals_Stats.objects.get(PlayerName=name)
+    Fouls = NBA_Player_Fouls_Stats.objects.get(PlayerName=name)
+    Rebounds = NBA_Player_Rebounds_Stats.objects.get(PlayerName=name)
+    Blocks = NBA_Player_Blocks_Stats.objects.get(PlayerName=name)
+    Assists = NBA_Player_Assists_Stats.objects.get(PlayerName=name)
+    context = {
+        'Scoring': Scoring,
+        'Steals': Steals,
+        'Fouls': Fouls,
+        'Rebounds': Rebounds,
+        'Blocks': Blocks,
+        'Assists': Assists,
+    }
+    return render(request, 'sports_stats/NBA_Player.html', context)
+
+
+
+# Here are the sports views
 
 def NFL(request):
     nfl_team_list = NFL_Team.objects.all()
