@@ -94,6 +94,7 @@ def NFL_Player_View(request, name):
     except ObjectDoesNotExist:
         pass
         
+
         # defense = NFL_Player_Defense_Stats.objects.get(PlayerName=name)
         # kick_returns = NFL_Player_Kick_Returns_Stats.objects.get(PlayerName=name)
         # kicking = NFL_Player_Kicking_Stats.objects.get(PlayerName=name)
