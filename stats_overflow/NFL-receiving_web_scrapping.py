@@ -9,6 +9,9 @@ doc = BeautifulSoup(result.content, "html.parser")
 tbody = doc.find("tbody")
 trs = tbody.find_all("tr")
 
+id_counter = 1
+
+
 with open('NFL-Receiving.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
     header = ['PlayerName','GamesPlayed', 'Receptions', 'ReceivingYards', 'ReceivingYardsPerGame', 'AverageYardsPerReception', 'LongestReception', 'ReceivingTouchdowns']
@@ -27,4 +30,8 @@ with open('NFL-Receiving.csv', 'w', encoding='utf8', newline='') as f:
         ReceivingTouchdowns = tds[7].get_text(strip=True)
 
         # Write data to CSV file
-        thewriter.writerow([PlayerName, GamesPlayed, Receptions, ReceivingYards, ReceivingYardsPerGame, AverageYardsPerReception, LongestReception, ReceivingTouchdowns])
+
+        thewriter.writerow([id_counter, PlayerName, GamesPlayed, Receptions, ReceivingYards, ReceivingYardsPerGame, AverageYardsPerReception, LongestReception, ReceivingTouchdowns])
+
+        id_counter += 1
+
