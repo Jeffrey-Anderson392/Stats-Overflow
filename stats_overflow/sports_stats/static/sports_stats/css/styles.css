@@ -20,6 +20,13 @@ nav {
     background-image: linear-gradient(to bottom right, blue, rgb(209, 247, 179));
 }
 
+.rounded-corner {
+    border-bottom-left-radius: 10px;
+    /* Rounds the bottom left corner */
+    border-bottom-right-radius: 10px;
+    /* Rounds the bottom right corner */
+}
+
 #gameCarousel {
     margin-bottom: 5rem;
 }
