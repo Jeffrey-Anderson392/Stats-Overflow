@@ -8,13 +8,15 @@ result = requests.get(url)
 doc = BeautifulSoup(result.content, "html.parser")
 tbody = doc.find("tbody")
 trs = tbody.find_all("tr")
+
 id_counter =1
+
 
 with open('NBA-Assists-Turnovers.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
     header = ['ID', 'PlayerName', 'GamesPlayed', 'GamesStarted', 'TotalAssists', 'AssistsPerGame', 'Turnover', 'TurnoversPerGame', 'AssistsPerTurnover']
     thewriter.writerow(header)
-    
+
 
     for tr in trs:
         tds = tr.find_all("td")
@@ -34,3 +36,4 @@ with open('NBA-Assists-Turnovers.csv', 'w', encoding='utf8', newline='') as f:
         thewriter.writerow([id_counter, PlayerName, GamesPlayed, GamesStarted, TotalAssists, AssistsPerGame, Turnovers, TurnoversPerGame, AssistsPerTurnover])
 
         id_counter += 1
+

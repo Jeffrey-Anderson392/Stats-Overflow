@@ -8,7 +8,9 @@ result = requests.get(url)
 doc = BeautifulSoup(result.content, "html.parser")
 tbody = doc.find("tbody")
 trs = tbody.find_all("tr")
+
 id_counter = 1
+
 
 with open('NBA-Rebounds.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
@@ -30,6 +32,8 @@ with open('NBA-Rebounds.csv', 'w', encoding='utf8', newline='') as f:
 
 
         # Write data to CSV file
+
         thewriter.writerow([id_counter, PlayerName, GamesPlayed, GamesStarted, MinutesPerGame, OffensiveRebounds, DeffensiveRebounds, TotalRebounds, ReboundsPerGame])
 
         id_counter += 1
+

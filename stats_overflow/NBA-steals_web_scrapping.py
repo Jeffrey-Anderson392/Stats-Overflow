@@ -13,7 +13,9 @@ with open('NBA-Steals.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
     header = ['ID', 'PlayerName', 'GamesPlayed', 'GamesStarted', 'TotalSteals', 'StealsPerGame']
     thewriter.writerow(header)
+
     id_counter = 1
+
 
     for tr in trs:
         tds = tr.find_all("td")
@@ -27,6 +29,8 @@ with open('NBA-Steals.csv', 'w', encoding='utf8', newline='') as f:
 
 
         # Write data to CSV file
+
         thewriter.writerow([id_counter,PlayerName, GamesPlayed, GamesStarted, TotalSteals, StealsPerGame])
 
         id_counter += 1
+
