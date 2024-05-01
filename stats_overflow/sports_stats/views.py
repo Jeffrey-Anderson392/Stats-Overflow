@@ -117,31 +117,87 @@ def NFL_Player_View(request, name):
     return render(request, 'sports_stats/NFL_Player.html', context)
 
 def NHL_Player_View(request, name):
-    goaltending = NHL_Player_Goaltending_Stats.objects.get(PlayerName=name)
-    penalties = NHL_Player_Penalties_Stats.objects.get(PlayerName=name)
-    scoring = NHL_Player_Scoring_Stats.objects.get(PlayerName=name)
-    context = {
-        'goaltending': goaltending,
-        'penalties': penalties,
-       'scoring': scoring,
-    }
+    context = {}
+    try:
+        goaltending = NHL_Player_Goaltending_Stats.objects.get(PlayerName=name)
+        context['goaltending'] = goaltending
+    except ObjectDoesNotExist:
+        pass
+
+    try:
+        penalties = NHL_Player_Penalties_Stats.objects.get(PlayerName=name)
+        context['penalties'] = penalties
+    except ObjectDoesNotExist:
+        pass
+
+    try:
+        scoring = NHL_Player_Scoring_Stats.objects.get(PlayerName=name)
+        context['scoring'] = scoring
+    except ObjectDoesNotExist:
+        pass
+
+    # goaltending = NHL_Player_Goaltending_Stats.objects.get(PlayerName=name)
+    # penalties = NHL_Player_Penalties_Stats.objects.get(PlayerName=name)
+    # scoring = NHL_Player_Scoring_Stats.objects.get(PlayerName=name)
+    # context = {
+    #     'goaltending': goaltending,
+    #     'penalties': penalties,
+    #    'scoring': scoring,
+    # }
     return render(request, 'sports_stats/NHL_Player.html', context)
 
 def NBA_Player_View(request, name):
-    Scoring = NBA_Player_Scoring_Stats.objects.get(PlayerName=name)
-    Steals = NBA_Player_Steals_Stats.objects.get(PlayerName=name)
-    Fouls = NBA_Player_Fouls_Stats.objects.get(PlayerName=name)
-    Rebounds = NBA_Player_Rebounds_Stats.objects.get(PlayerName=name)
-    Blocks = NBA_Player_Blocks_Stats.objects.get(PlayerName=name)
-    Assists = NBA_Player_Assists_Stats.objects.get(PlayerName=name)
-    context = {
-        'Scoring': Scoring,
-        'Steals': Steals,
-        'Fouls': Fouls,
-        'Rebounds': Rebounds,
-        'Blocks': Blocks,
-        'Assists': Assists,
-    }
+    context = {}
+
+    try:
+        scoring = NBA_Player_Scoring_Stats.objects.get(PlayerName=name)
+        context['scoring'] = scoring
+    except ObjectDoesNotExist:
+        pass
+
+    try:
+        steals = NBA_Player_Steals_Stats.objects.get(PlayerName=name)
+        context['steals'] = steals
+    except:
+        pass
+
+    try:
+        fouls = NBA_Player_Fouls_Stats.objects.get(PlayerName=name)
+        context['fouls'] = fouls
+    except ObjectDoesNotExist:
+        pass
+
+    try:
+        rebounds = NBA_Player_Rebounds_Stats.objects.get(PlayerName=name)
+        context['rebounds'] = rebounds
+    except ObjectDoesNotExist:
+        pass
+
+    try:
+        blocks = NBA_Player_Blocks_Stats.objects.get(PlayerName=name)
+        context['blocks'] = blocks
+    except ObjectDoesNotExist:
+        pass
+
+    try:
+        assists = NBA_Player_Assists_Stats.objects.get(PlayerName=name)
+        context['assists'] = assists
+    except ObjectDoesNotExist:
+        pass
+    # Scoring = NBA_Player_Scoring_Stats.objects.get(PlayerName=name)
+    # Steals = NBA_Player_Steals_Stats.objects.get(PlayerName=name)
+    # Fouls = NBA_Player_Fouls_Stats.objects.get(PlayerName=name)
+    # Rebounds = NBA_Player_Rebounds_Stats.objects.get(PlayerName=name)
+    # Blocks = NBA_Player_Blocks_Stats.objects.get(PlayerName=name)
+    # Assists = NBA_Player_Assists_Stats.objects.get(PlayerName=name)
+    # context = {
+    #     'Scoring': Scoring,
+    #     'Steals': Steals,
+    #     'Fouls': Fouls,
+    #     'Rebounds': Rebounds,
+    #     'Blocks': Blocks,
+    #     'Assists': Assists,
+    # }
     return render(request, 'sports_stats/NBA_Player.html', context)
 
 
