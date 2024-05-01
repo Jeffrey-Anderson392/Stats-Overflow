@@ -41,10 +41,18 @@
     </form>
     
     {% if stats_data %}
-        <div class="table-responsive sticky-header">
-            <table class="table table-striped">
-        
-                <thead>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    {% for field_name in field_names %}
+                        <th>{{ field_name }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in context %}
+
                     <tr>
                         {% for field_name in field_names %}
                             <th>{{ field_name }}</th>
