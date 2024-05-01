@@ -3,3 +3,13 @@
     min-height: 100vh;
     padding-bottom: 2.5rem;
 }
+
+nav {
+
+    border-bottom: .15rem solid;
+    border-bottom-color: rgb(154, 154, 154);
+}
+
+#grad {
+    background-image: linear-gradient(to bottom right, blue, rgb(209, 247, 179));
+}
