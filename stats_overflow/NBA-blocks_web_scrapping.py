@@ -10,6 +10,7 @@ tbody = doc.find("tbody")
 trs = tbody.find_all("tr")
 id_counter = 1 
 
+
 with open('NBA-Blocks.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
     header = ['PlayerName', 'GamesPlayed', 'GamesStarted', 'TotalBlocks', 'BlocksPerGame']
