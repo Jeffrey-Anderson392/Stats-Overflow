@@ -11,7 +11,7 @@ trs = tbody.find_all("tr")
 
 with open('NBA-Steals.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
-    header = ['Name', 'GamesPlayed', 'GamesStarted', 'TotalSteals', 'StealsPerGame']
+    header = ['ID', 'PlayerName', 'GamesPlayed', 'GamesStarted', 'TotalSteals', 'StealsPerGame']
     thewriter.writerow(header)
     id_counter = 1
 

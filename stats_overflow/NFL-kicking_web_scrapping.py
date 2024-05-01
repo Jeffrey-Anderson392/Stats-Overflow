@@ -12,7 +12,7 @@ id_counter = 1
 
 with open('NFL-Kicking.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
-    header = ['PlayerName', 'GamesPlayed', 'FieldGoalsMade', 'FieldGoalPercentage', 'LongestFieldGoal', 'ExtraPointsMade', 'ExtraPointPercentage', 'KickingPoints']
+    header = ['ID', 'PlayerName', 'GamesPlayed', 'FieldGoalsMade', 'FieldGoalPercentage', 'LongestFieldGoal', 'ExtraPointsMade', 'ExtraPointPercentage', 'KickingPoints']
     thewriter.writerow(header)
 
     for tr in trs:

@@ -12,7 +12,7 @@ id_counter = 1
 
 with open('NHL-penalties.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
-    header = ['PlayerName', 'GamesPlayed', 'PenaltyMinutes', 'MajorPenalties', 'MinorPenalties']
+    header = ['ID', 'PlayerName', 'GamesPlayed', 'PenaltyMinutes', 'MajorPenalties', 'MinorPenalties']
     thewriter.writerow(header)
 
     for tr in trs:
