@@ -16,6 +16,7 @@ nav {
     border-bottom-color: rgb(154, 154, 154);
 }
 
+/* Grad and rounded corner is both for the home page top banner */
 #grad {
     background-image: linear-gradient(to bottom right, blue, rgb(209, 247, 179));
 }
@@ -29,4 +30,29 @@ nav {
 
 #gameCarousel {
     margin-bottom: 5rem;
+}
+
+
+
+
+/* This is for formatting tables */
+.sticky-header .table {
+    width: 100%;
+    /* Ensures the table is the full width of the container */
+}
+
+.sticky-header .table thead th {
+    position: sticky;
+    top: 0;
+    /* Adjust if there is a fixed header, e.g., top: 50px; */
+    background-color: white;
+    z-index: 1020;
+    /* Ensures the header is above other content */
+}
+
+.table-responsive {
+    max-height: 400px;
+    /* Adjust based on your needs */
+    overflow-y: auto;
+    /* Adds vertical scrollbar */
 }
