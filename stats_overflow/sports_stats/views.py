@@ -35,6 +35,8 @@ def home(request):
     
     return render(request, 'sports_stats/home.html', {})
 
+
+# This is where the players are viewed
 def NFL_Player_View(request, name):
     context = {}
     
@@ -114,6 +116,37 @@ def NFL_Player_View(request, name):
         # }
     return render(request, 'sports_stats/NFL_Player.html', context)
 
+def NHL_Player_View(request, name):
+    goaltending = NHL_Player_Goaltending_Stats.objects.get(PlayerName=name)
+    penalties = NHL_Player_Penalties_Stats.objects.get(PlayerName=name)
+    scoring = NHL_Player_Scoring_Stats.objects.get(PlayerName=name)
+    context = {
+        'goaltending': goaltending,
+        'penalties': penalties,
+       'scoring': scoring,
+    }
+    return render(request, 'sports_stats/NHL_Player.html', context)
+
+def NBA_Player_View(request, name):
+    Scoring = NBA_Player_Scoring_Stats.objects.get(PlayerName=name)
+    Steals = NBA_Player_Steals_Stats.objects.get(PlayerName=name)
+    Fouls = NBA_Player_Fouls_Stats.objects.get(PlayerName=name)
+    Rebounds = NBA_Player_Rebounds_Stats.objects.get(PlayerName=name)
+    Blocks = NBA_Player_Blocks_Stats.objects.get(PlayerName=name)
+    Assists = NBA_Player_Assists_Stats.objects.get(PlayerName=name)
+    context = {
+        'Scoring': Scoring,
+        'Steals': Steals,
+        'Fouls': Fouls,
+        'Rebounds': Rebounds,
+        'Blocks': Blocks,
+        'Assists': Assists,
+    }
+    return render(request, 'sports_stats/NBA_Player.html', context)
+
+
+
+# Here are the sports views
 
 def NFL(request):
     nfl_team_list = NFL_Team.objects.all()
@@ -154,10 +187,64 @@ def NFL(request):
     })
 
 def NBA(request):
-    return render(request, 'sports_stats/NBA.html', {})
+    nba_team_list = NBA_Team.objects.all()
+    stats_categories = [
+        'Team List', 'Scoring Stats', 'Steals Stats', 'Fouls Stats',
+        'Rebounds Stats', 'Blocks Stats', 'Assists Stats'
+    ]
+    category_models = {
+        'Team List': 'NBA_Team',
+        'Scoring Stats': 'NBA_Player_Scoring_Stats',
+        'Steals Stats': 'NBA_Player_Steals_Stats',
+        'Fouls Stats': 'NBA_Player_Fouls_Stats',
+        'Rebounds Stats': 'NBA_Player_Rebounds_Stats',
+        'Blocks Stats': 'NBA_Player_Blocks_Stats',
+        'Assists Stats': 'NBA_Player_Assists_Stats',
+    }
+    selected_category = request.GET.get('category')
+    stats_data = None
+    field_names = []
+    if selected_category:
+        model_name = category_models[selected_category]
+        model = apps.get_model('sports_stats', model_name) 
+        stats_data = model.objects.all()
+        field_names = [field.name for field in model._meta.fields]
+    
+    return render(request, 'sports_stats/NBA.html', {
+        "team_list": nba_team_list, 
+        "stats_categories": stats_categories,
+        "selected_category": selected_category,
+        "stats_data": stats_data,
+        "field_names": field_names
+    })
 
 def NHL(request):
-    return render(request, 'sports_stats/NHL.html', {})
+    nhl_team_list = NHL_Team.objects.all()
+    stats_categories = [
+        'Team List', 'Goaltending Stats', 'Penalties Stats', 'Scoring Stats'
+    ]
+    category_models = {
+        'Team List': 'NHL_Team',
+        'Goaltending Stats': 'NHL_Player_Goaltending_Stats',
+        'Penalties Stats': 'NHL_Player_Penalties_Stats',
+        'Scoring Stats': 'NHL_Player_Scoring_Stats',
+    }
+    selected_category = request.GET.get('category')
+    stats_data = None
+    field_names = []
+    if selected_category:
+        model_name = category_models[selected_category]
+        model = apps.get_model('sports_stats', model_name) 
+        stats_data = model.objects.all()
+        field_names = [field.name for field in model._meta.fields]
+    
+    return render(request, 'sports_stats/NHL.html', {
+        "team_list": nhl_team_list, 
+        "stats_categories": stats_categories,
+        "selected_category": selected_category,
+        "stats_data": stats_data,
+        "field_names": field_names
+    })
 
 def Valorant(request):
     return render(request, 'sports_stats/Valorant.html', {})
