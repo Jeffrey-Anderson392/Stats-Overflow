@@ -9,6 +9,9 @@ doc = BeautifulSoup(result.content, "html.parser")
 tbody = doc.find("tbody")
 trs = tbody.find_all("tr")
 
+id_counter = 1
+
+
 with open('NHL-penalties.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
     header = ['PlayerName', 'GamesPlayed', 'PenaltyMinutes', 'MajorPenalties', 'MinorPenalties']
@@ -26,4 +29,8 @@ with open('NHL-penalties.csv', 'w', encoding='utf8', newline='') as f:
 
 
         # Write data to CSV file
-        thewriter.writerow([PlayerName, GamesPlayed, PenaltyMinutes, MajorPenalties, MinorPenalties])
+
+        thewriter.writerow([id_counter, PlayerName, GamesPlayed, PenaltyMinutes, MajorPenalties, MinorPenalties])
+
+        id_counter += 1
+
