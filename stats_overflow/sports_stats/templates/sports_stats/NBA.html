@@ -24,43 +24,51 @@
     {% endif %}
     
     <h2>Player Statistics</h2>
-    <form method="get" action="">
-        <select name="category" onchange="this.form.submit()">
-            <option value="">Select a category</option>
-            {% for category in stats_categories %}
-                <option value="{{ category }}" {% if category == selected_category %}selected{% endif %}>{{ category }}</option>
-            {% endfor %}
-        </select>
+    <form method="get" action="" class="mb-3">
+        <div class="form-group">
+            <label for="categorySelect">Select a Category:</label>
+            <select id="categorySelect" name="category" class="form-control" onchange="this.form.submit()">
+                <option value="">Select a category</option>
+                {% for category in stats_categories %}
+                    <option value="{{ category }}" {% if category == selected_category %}selected{% endif %}>
+                        {{ category }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
     </form>
     
     {% if stats_data %}
-        <table class="table">
-            <thead>
-                <tr>
-                    {% for field_name in field_names %}
-                        <th>{{ field_name }}</th>
-                    {% endfor %}
-                </tr>
-            </thead>
-            <tbody>
-                {% for item in stats_data %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+        
+                <thead>
                     <tr>
                         {% for field_name in field_names %}
-                             {% with forloop.counter0 as field_index %}
-                                {% if field_index == 1 %}  <!-- Assuming PlayerName is in the second column -->
-                                    {% if item|get_field:field_name %}
-                                        <td>{{ item|get_field:field_name }}</td>
-                                    {% else %}
-                                        <td>No Name</td>
-                                    {% endif %}
-                                {% else %}
-                                    <td>{{ item|get_field:field_name }}</td>
-                                {% endif %}
-                            {% endwith %}
+                            <th>{{ field_name }}</th>
                         {% endfor %}
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {% for item in stats_data %}
+                        <tr>
+                            {% for field_name in field_names %}
+                                {% with forloop.counter0 as field_index %}
+                                    {% if field_index == 1 %}  <!-- Assuming PlayerName is in the second column -->
+                                        {% if item|get_field:field_name %}
+                                            <td>{{ item|get_field:field_name }}</td>
+                                        {% else %}
+                                            <td>No Name</td>
+                                        {% endif %}
+                                    {% else %}
+                                        <td>{{ item|get_field:field_name }}</td>
+                                    {% endif %}
+                                {% endwith %}
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     {% endif %}
 {% endblock %}
