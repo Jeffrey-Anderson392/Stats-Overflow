@@ -7,18 +7,20 @@
 {% block content %}
     <h1>NBA Teams</h1>
     {% if team_list %}
-        <table class="table table-striped">
-            <thead class="table-dark">
-                <th>Team</th>
-                <th>Conference</th>
-            </thead>
-            {% for team in team_list %}
-                <tr>
-                    <td>{{ team.team_name }}</td>
-                    <td>{{ team.team_conference }}</td>
-                </tr>
-            {% endfor %}
-        </table>
+        <div class="table-responsive sticky-header">
+            <table class="table table-striped">
+                <thead class="table-light">
+                    <th>Team</th>
+                    <th>Conference</th>
+                </thead>
+                {% for team in team_list %}
+                    <tr>
+                        <td>{{ team.team_name }}</td>
+                        <td>{{ team.team_conference }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
     {% else %}
         <p>There are no teams.</p>
     {% endif %}
@@ -56,7 +58,7 @@
                                 {% with forloop.counter0 as field_index %}
                                     {% if field_index == 1 %}  <!-- Assuming PlayerName is in the second column -->
                                         {% if item|get_field:field_name %}
-                                            <td>{{ item|get_field:field_name }}</td>
+                                            <td><a href="{% url 'NBA_Player' name=item|get_field:field_name %}">{{ item|get_field:field_name }}</a></td>
                                         {% else %}
                                             <td>No Name</td>
                                         {% endif %}
