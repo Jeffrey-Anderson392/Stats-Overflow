@@ -24,6 +24,8 @@ from .models import NHL_Player_Goaltending_Stats
 from .models import NHL_Player_Penalties_Stats
 from .models import NHL_Player_Scoring_Stats
 
+from .models import Valorant_Players
+
 
 from .models import NFL_Team
 from .models import NHL_Team
@@ -360,7 +362,15 @@ def NHL(request):
     })
 
 def Valorant(request):
-    return render(request, 'sports_stats/Valorant.html', {})
+    players = Valorant_Players.objects.all()
+    field_names = []
+    if Valorant_Players:
+        model_name = Valorant_Players
+        model = apps.get_model('sports_stats', model_name) 
+        stats_data = model.objects.all()
+        field_names = [field.name for field in model._meta.fields]
+    return render(request, 'sports_stats/Valorant.html', { "player_list": players, "stats_data": stats_data,
+        "field_names": field_names })
 
 
 
