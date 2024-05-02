@@ -332,15 +332,26 @@ class Valorant_Team(models.Model):
         return self.name
 
 class Valorant_Players(models.Model):
-    player_id = models.AutoField(primary_key=True)
-    team_id = models.ForeignKey('Valorant_Team', on_delete=models.SET_NULL, null=True)
-    fname = models.CharField(max_length=30)
-    lname = models.CharField(max_length=30)
-    kills = models.CharField(max_length = 10)
-    deaths = models.CharField(max_length = 10)
-    kd = models.CharField(max_length = 10)
-    ACS = models.CharField(max_length = 10)
-    Kills_per_round = models.CharField(max_length = 10)
+    PlayerName = models.CharField(max_length=30)
+    RoundsPlayed = models.CharField(max_length=10)
+    Rating = models.CharField(max_length=10)
+    AverageCombatScore = models.CharField(max_length=10)
+    KillsToDeaths = models.CharField(max_length=10)
+    KillAssistsPercentage = models.CharField(max_length=10)
+    AverageDamagePerRound = models.CharField(max_length=10)
+    KillPerRound = models.CharField(max_length=10)
+    AssistsPerRound = models.CharField(max_length=10)
+    FirstKillsPerRound = models.CharField(max_length=10)
+    FirstDeathPerRound = models.CharField(max_length=10)
+    HeadShotPercentage = models.CharField(max_length=10)
+    ClutchSuccessRate = models.CharField(max_length=10)
+    Clutches = models.CharField(max_length=10)
+    MaxKillsInAMap = models.CharField(max_length=10)
+    Kills = models.CharField(max_length=10)
+    Deaths = models.CharField(max_length=10)
+    Assists = models.CharField(max_length=10)
+    FirstKills = models.CharField(max_length=10)
+    FirstDeaths = models.CharField(max_length=10)
 
 # class User_Favorite_Valorant_Players:
 #     def __init__(self, player_id, user_id):
