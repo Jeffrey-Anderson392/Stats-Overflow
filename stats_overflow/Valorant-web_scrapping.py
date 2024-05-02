@@ -14,7 +14,7 @@ id_counter = 1
 
 with open('Valorant-Player.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
-    header = ['ID', 'PlayerName', 'RoundsPlayed', 'Rating', 'AverageCombatScore', 'KillsToDeaths', 'KillAssistsPercentage', 'AverageDamagePerRound', 'KillPerRound', 'AssistsPerRound', 'FirstKillsPerRound', 'FirstDeathPerRound', 'HeadShotPercentage', 'ClutchSuccessRate', 'Clutches', 'MaxKillsInAMap', 'Kills', 'Deaths', 'Assists', 'FirstKills', 'FirstDeaths']
+    header = ['ID', 'PlayerName', 'RoundsPlayed', 'Rating', 'AverageCombatScore', 'KillsToDeaths', 'KillAssistsPercentage', 'AverageDamagePerRound', 'KillPerRound', 'AssistsPerRound', 'FirstKillsPerRound', 'FirstDeathPerRound', 'HeadShotPercentage', 'ClutchSuccessRate', 'MaxKillsInAMap', 'Kills', 'Deaths', 'Assists', 'FirstKills', 'FirstDeaths']
     thewriter.writerow(header)
 
     for tr in trs:
@@ -34,7 +34,6 @@ with open('Valorant-Player.csv', 'w', encoding='utf8', newline='') as f:
             FirstDeathPerRound = tds[11].get_text(strip=True)
             HeadShotPercentage = tds[12].get_text(strip=True)
             ClutchSuccessRate = tds[13].get_text(strip=True)
-            Clutches = tds[14].get_text(strip=True)
             MaxKillsInAMap = tds[15].get_text(strip=True)
             Kills = tds[16].get_text(strip=True)
             Deaths = tds[17].get_text(strip=True)
@@ -45,7 +44,7 @@ with open('Valorant-Player.csv', 'w', encoding='utf8', newline='') as f:
 
         # Write data to CSV file
 
-        thewriter.writerow([id_counter, PlayerName, RoundsPlayed, Rating, AverageCombatScore, KillsToDeaths, KillAssistsPercentage, AverageDamagePerRound, KillPerRound, AssistsPerRound, FirstKillsPerRound, FirstDeathPerRound, HeadShotPercentage, ClutchSuccessRate, Clutches, MaxKillsInAMap, Kills, Deaths, Assists, FirstKills, FirstDeaths])
+        thewriter.writerow([id_counter, PlayerName, RoundsPlayed, Rating, AverageCombatScore, KillsToDeaths, KillAssistsPercentage, AverageDamagePerRound, KillPerRound, AssistsPerRound, FirstKillsPerRound, FirstDeathPerRound, HeadShotPercentage, ClutchSuccessRate, MaxKillsInAMap, Kills, Deaths, Assists, FirstKills, FirstDeaths])
 
         id_counter += 1
 
