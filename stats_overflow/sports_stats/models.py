@@ -345,7 +345,6 @@ class Valorant_Players(models.Model):
     FirstDeathPerRound = models.CharField(max_length=10)
     HeadShotPercentage = models.CharField(max_length=10)
     ClutchSuccessRate = models.CharField(max_length=10)
-    Clutches = models.CharField(max_length=10)
     MaxKillsInAMap = models.CharField(max_length=10)
     Kills = models.CharField(max_length=10)
     Deaths = models.CharField(max_length=10)
