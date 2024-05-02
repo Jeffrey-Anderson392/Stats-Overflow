@@ -1,5 +1,5 @@
 {% extends 'sports_stats/base.html' %}
-
+{% load custom_tags %}
 {% block title %}
     NFL Player Stats
 {% endblock %}
@@ -12,7 +12,7 @@
         </div>
     </div>
         
-    <h2>Player Statistics</h2>
+    <h2>{{ player_name }} Statistics</h2>
     <form method="get" action="" class="mb-3">
         <div class="form-group">
             <label for="categorySelect">Select a Category:</label>
@@ -28,33 +28,31 @@
     </form>
     
     {% if stats_data %}
-        <div class="table-responsive sticky-header">
-            <table class="table table-striped">
-        
-                <thead>
+    <div class="table-responsive sticky-header">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    {% for field_name in field_names %}
+                        <th>{{ field_name }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in stats_data %}
                     <tr>
                         {% for field_name in field_names %}
-                            <th>{{ field_name }}</th>
+                            {% if field_name == "PlayerName" %}  
+                                <td>{{ item|get_field:field_name }}</td>
+                            {% else %}
+                                <td>{{ item|get_field:field_name }}</td>
+                            {% endif %}
                         {% endfor %}
                     </tr>
-                </thead>
-                <tbody>
-                    {% for item in stats_data %}
-                        <tr>
-                            {% for field_name in field_names %}
-                                {% with forloop.counter0 as field_index %}
-                                    {% if field_index == 1 %}  <!-- Assuming PlayerName is in the second column -->
-                                        
-                                    
-                                    {% endif %}
-                                {% endwith %}
-                            {% endfor %}
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endif %}
 
     
 {% endblock %}
