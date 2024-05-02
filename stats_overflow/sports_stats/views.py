@@ -356,11 +356,13 @@ def NHL(request):
 
 def Valorant(request):
     players = Valorant_Players.objects.all()
-    field_names = [field.name for field in Valorant_Players._meta.fields]
-    return render(request, 'sports_stats/Valorant.html', { 
-        "player_list": players,
-        "field_names": field_names 
-        })
+    field_names = []
+    if Valorant_Players:
+        model = Valorant_Players
+        stats_data = model.objects.all()
+        field_names = [field.name for field in model._meta.fields]
+    return render(request, 'sports_stats/Valorant.html', { "player_list": players, "stats_data": stats_data,
+        "field_names": field_names })
 
 
 
