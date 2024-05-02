@@ -190,11 +190,10 @@ def NBA_Player_View(request, name):
     context['player_name'] = name
 
     stats_categories = [
-        'Team List', 'Scoring Stats', 'Steals Stats', 'Fouls Stats',
+        'Scoring Stats', 'Steals Stats', 'Fouls Stats',
         'Rebounds Stats', 'Blocks Stats', 'Assists Stats'
     ]
     category_models = {
-        'Team List': 'NBA_Team',
         'Scoring Stats': 'NBA_Player_Scoring_Stats',
         'Steals Stats': 'NBA_Player_Steals_Stats',
         'Fouls Stats': 'NBA_Player_Fouls_Stats',
@@ -262,12 +261,11 @@ def NBA_Player_View(request, name):
 def NFL(request):
     nfl_team_list = NFL_Team.objects.all()
     stats_categories = [
-        'Team List', 'Defense Stats', 'Kick Returns Stats', 'Kicking Stats', 
+        'Defense Stats', 'Kick Returns Stats', 'Kicking Stats', 
         'Passing Stats', 'Punt Returns Stats', 'Punting Stats',
         'Receiving Stats', 'Rushing Stats', 'Scoring Stats'
     ]
     category_models = {
-        'Team List': 'NFL_Team',
         'Defense Stats': 'NFL_Player_Defense_Stats',
         'Kick Returns Stats': 'NFL_Player_Kick_Returns_Stats',
         'Kicking Stats': 'NFL_Player_Kicking_Stats',
@@ -300,11 +298,10 @@ def NFL(request):
 def NBA(request):
     nba_team_list = NBA_Team.objects.all()
     stats_categories = [
-        'Team List', 'Scoring Stats', 'Steals Stats', 'Fouls Stats',
+        'Scoring Stats', 'Steals Stats', 'Fouls Stats',
         'Rebounds Stats', 'Blocks Stats', 'Assists Stats'
     ]
     category_models = {
-        'Team List': 'NBA_Team',
         'Scoring Stats': 'NBA_Player_Scoring_Stats',
         'Steals Stats': 'NBA_Player_Steals_Stats',
         'Fouls Stats': 'NBA_Player_Fouls_Stats',
@@ -332,10 +329,10 @@ def NBA(request):
 def NHL(request):
     nhl_team_list = NHL_Team.objects.all()
     stats_categories = [
-        'Team List', 'Goaltending Stats', 'Penalties Stats', 'Scoring Stats'
+         'Goaltending Stats', 'Penalties Stats', 'Scoring Stats'
     ]
     category_models = {
-        'Team List': 'NHL_Team',
+        
         'Goaltending Stats': 'NHL_Player_Goaltending_Stats',
         'Penalties Stats': 'NHL_Player_Penalties_Stats',
         'Scoring Stats': 'NHL_Player_Scoring_Stats',
