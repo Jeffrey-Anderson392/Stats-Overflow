@@ -44,14 +44,11 @@ def NFL_Player_View(request, name):
     context = {}
     context['player_name'] = name
 
-    nfl_team_list = NFL_Team.objects.all()
-    stats_categories = [
-        'Team List', 'Defense Stats', 'Kick Returns Stats', 'Kicking Stats', 
+    stats_categories = [ 'Defense Stats', 'Kick Returns Stats', 'Kicking Stats', 
         'Passing Stats', 'Punt Returns Stats', 'Punting Stats',
         'Receiving Stats', 'Rushing Stats', 'Scoring Stats'
     ]
     category_models = {
-        'Team List': 'NFL_Team',
         'Defense Stats': 'NFL_Player_Defense_Stats',
         'Kick Returns Stats': 'NFL_Player_Kick_Returns_Stats',
         'Kicking Stats': 'NFL_Player_Kicking_Stats',
@@ -70,11 +67,10 @@ def NFL_Player_View(request, name):
     if selected_category:
         model_name = category_models[selected_category]
         model = apps.get_model('sports_stats', model_name) 
-        stats_data = model.objects.all()
+        stats_data = model.objects.filter(PlayerName=name)
         field_names = [field.name for field in model._meta.fields]
 
     return render(request, 'sports_stats/NFL_Player.html', {
-        "team_list": nfl_team_list, 
         "stats_categories": stats_categories,
         "selected_category": selected_category,
         "stats_data": stats_data,
