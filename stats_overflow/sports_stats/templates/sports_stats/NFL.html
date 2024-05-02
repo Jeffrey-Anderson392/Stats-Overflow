@@ -51,24 +51,35 @@
                 </tr>
             </thead>
             <tbody>
+
                 {% for item in stats_data %}
+              
                     <tr>
                         {% for field_name in field_names %}
-                             {% with forloop.counter0 as field_index %}
-                                {% if field_index == 1 %}  <!-- Assuming PlayerName is in the first column -->
-                                    {% if item|get_field:field_name %}
-                                        <td><a href="{% url 'NFL_Player' name=item|get_field:field_name %}">{{ item|get_field:field_name }}</a></td>
-                                    {% else %}
-                                        <td>No Name</td>
-                                    {% endif %}
-                                {% else %}
-                                    <td>{{ item|get_field:field_name }}</td>
-                                {% endif %}
-                            {% endwith %}
+                            <th>{{ field_name }}</th>
                         {% endfor %}
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {% for item in stats_data %}
+                        <tr>
+                            {% for field_name in field_names %}
+                                {% with forloop.counter0 as field_index %}
+                                    {% if field_index == 1 %}  <!-- Assuming PlayerName is in the second column -->
+                                        {% if item|get_field:field_name %}
+                                            <td><a href="{% url 'NFL_Player' name=item|get_field:field_name %}">{{ item|get_field:field_name }}</a></td>
+                                        {% else %}
+                                            <td>No Name</td>
+                                        {% endif %}
+                                    {% else %}
+                                        <td>{{ item|get_field:field_name }}</td>
+                                    {% endif %}
+                                {% endwith %}
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     {% endif %}
 {% endblock %}
