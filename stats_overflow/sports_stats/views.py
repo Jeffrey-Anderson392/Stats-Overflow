@@ -35,87 +35,108 @@ def home(request):
     
     return render(request, 'sports_stats/home.html', {})
 
+from django.shortcuts import render
+from .models import NFL_Player_Defense_Stats, NFL_Player_Kick_Returns_Stats, NFL_Player_Kicking_Stats, NFL_Player_Passing_Stats, NFL_Player_Punt_Returns_Stats, NFL_Player_Punting_Stats, NFL_Player_Receiving_Stats, NFL_Player_Rushing_Stats, NFL_Player_Scoring_Stats
+
 
 # This is where the players are viewed
 def NFL_Player_View(request, name):
     context = {}
-    
-    try:
-        defense = NFL_Player_Defense_Stats.objects.get(PlayerName=name)
-        context['defense'] = defense
-    except ObjectDoesNotExist:
-        pass
+    context['player_name'] = name
 
-    try:
-        kick_returns = NFL_Player_Kick_Returns_Stats.objects.get(PlayerName=name)
-        context['kick_returns'] = kick_returns
-    except ObjectDoesNotExist:
-        pass
+    nfl_team_list = NFL_Team.objects.all()
+    stats_categories = [
+        'Team List', 'Defense Stats', 'Kick Returns Stats', 'Kicking Stats', 
+        'Passing Stats', 'Punt Returns Stats', 'Punting Stats',
+        'Receiving Stats', 'Rushing Stats', 'Scoring Stats'
+    ]
+    category_models = {
+        'Team List': 'NFL_Team',
+        'Defense Stats': 'NFL_Player_Defense_Stats',
+        'Kick Returns Stats': 'NFL_Player_Kick_Returns_Stats',
+        'Kicking Stats': 'NFL_Player_Kicking_Stats',
+        'Passing Stats': 'NFL_Player_Passing_Stats',
+        'Punt Returns Stats': 'NFL_Player_Punt_Returns_Stats',
+        'Punting Stats': 'NFL_Player_Punting_Stats',
+        'Receiving Stats': 'NFL_Player_Receiving_Stats',
+        'Rushing Stats': 'NFL_Player_Rushing_Stats',
+        'Scoring Stats': 'NFL_Player_Scoring_Stats',
+    }
 
-    try:
-        kicking = NFL_Player_Kicking_Stats.objects.get(PlayerName=name)
-        context['kicking'] = kicking
-    except ObjectDoesNotExist:
-        pass
+    selected_category = request.GET.get('category')
+    stats_data = None
+    field_names = []
 
-    try:
-        passing = NFL_Player_Passing_Stats.objects.get(PlayerName=name)
-        context['passing'] = passing
-    except ObjectDoesNotExist:
-        pass
+    if selected_category:
+        model_name = category_models[selected_category]
+        model = apps.get_model('sports_stats', model_name) 
+        stats_data = model.objects.all()
+        field_names = [field.name for field in model._meta.fields]
 
-    try:
-        punt_returns = NFL_Player_Punt_Returns_Stats.objects.get(PlayerName=name)
-        context['punt_returns'] = punt_returns
-    except ObjectDoesNotExist:
-        pass
+    return render(request, 'sports_stats/NFL_Player.html', {
+        "team_list": nfl_team_list, 
+        "stats_categories": stats_categories,
+        "selected_category": selected_category,
+        "stats_data": stats_data,
+        "field_names": field_names,
+        "player_name": name
+    })
 
-    try:
-        punting = NFL_Player_Punting_Stats.objects.get(PlayerName=name)
-        context['punting'] = punting
-    except ObjectDoesNotExist:
-        pass
+    # try:
+    #     defense = NFL_Player_Defense_Stats.objects.get(PlayerName=name)
+    #     context['defense'] = defense
+    # except ObjectDoesNotExist:
+    #     pass
 
-    try:
-        receiving = NFL_Player_Receiving_Stats.objects.get(PlayerName=name)
-        context['receiving'] = receiving
-    except ObjectDoesNotExist: 
-        pass
+    # try:
+    #     kick_returns = NFL_Player_Kick_Returns_Stats.objects.get(PlayerName=name)
+    #     context['kick_returns'] = kick_returns
+    # except ObjectDoesNotExist:
+    #     pass
 
-    try:
-        rushing = NFL_Player_Rushing_Stats.objects.get(PlayerName=name)
-        context['rushing'] = rushing
-    except ObjectDoesNotExist:
-        pass
+    # try:
+    #     kicking = NFL_Player_Kicking_Stats.objects.get(PlayerName=name)
+    #     context['kicking'] = kicking
+    # except ObjectDoesNotExist:
+    #     pass
 
-    try:
-        scoring = NFL_Player_Scoring_Stats.objects.get(PlayerName=name)
-        context['scoring'] = scoring
-    except ObjectDoesNotExist:
-        pass
-        
+    # try:
+    #     passing = NFL_Player_Passing_Stats.objects.get(PlayerName=name)
+    #     context['passing'] = passing
+    # except ObjectDoesNotExist:
+    #     pass
 
-        # defense = NFL_Player_Defense_Stats.objects.get(PlayerName=name)
-        # kick_returns = NFL_Player_Kick_Returns_Stats.objects.get(PlayerName=name)
-        # kicking = NFL_Player_Kicking_Stats.objects.get(PlayerName=name)
-        # passing = NFL_Player_Passing_Stats.objects.get(PlayerName=name)
-        # punt_returns = NFL_Player_Punt_Returns_Stats.objects.get(PlayerName=name)
-        # punting = NFL_Player_Punting_Stats.objects.get(PlayerName=name)
-        # receiving = NFL_Player_Receiving_Stats.objects.get(PlayerName=name)
-        # rushing = NFL_Player_Rushing_Stats.objects.get(PlayerName=name)
-        # scoring = NFL_Player_Scoring_Stats.objects.get(PlayerName=name)
-        # context = {
-        #     'defense': defense,
-        #     'kick_returns': kick_returns,
-        #     'kicking': kicking,
-        #     'passing': passing,
-        #     'punt_returns': punt_returns,
-        #     'punting': punting,
-        #     'receiving': receiving,
-        #     'rushing': rushing,
-        #     'scoring': scoring,
-        # }
-    return render(request, 'sports_stats/NFL_Player.html', context)
+    # try:
+    #     punt_returns = NFL_Player_Punt_Returns_Stats.objects.get(PlayerName=name)
+    #     context['punt_returns'] = punt_returns
+    # except ObjectDoesNotExist:
+    #     pass
+
+    # try:
+    #     punting = NFL_Player_Punting_Stats.objects.get(PlayerName=name)
+    #     context['punting'] = punting
+    # except ObjectDoesNotExist:
+    #     pass
+
+    # try:
+    #     receiving = NFL_Player_Receiving_Stats.objects.get(PlayerName=name)
+    #     context['receiving'] = receiving
+    # except ObjectDoesNotExist: 
+    #     pass
+
+    # try:
+    #     rushing = NFL_Player_Rushing_Stats.objects.get(PlayerName=name)
+    #     context['rushing'] = rushing
+    # except ObjectDoesNotExist:
+    #     pass
+
+    # try:
+    #     scoring = NFL_Player_Scoring_Stats.objects.get(PlayerName=name)
+    #     context['scoring'] = scoring
+    # except ObjectDoesNotExist:
+    #     pass
+
+    # return render(request, 'sports_stats/NFL_Player.html', context)
 
 def NHL_Player_View(request, name):
     context = {}
