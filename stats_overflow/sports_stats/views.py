@@ -190,21 +190,17 @@ def NBA_Player_View(request, name):
     context['player_name'] = name
 
     stats_categories = [
-        'Team List', 'Defense Stats', 'Kick Returns Stats', 'Kicking Stats', 
-        'Passing Stats', 'Punt Returns Stats', 'Punting Stats',
-        'Receiving Stats', 'Rushing Stats', 'Scoring Stats'
+        'Team List', 'Scoring Stats', 'Steals Stats', 'Fouls Stats',
+        'Rebounds Stats', 'Blocks Stats', 'Assists Stats'
     ]
     category_models = {
-        'Team List': 'NFL_Team',
-        'Defense Stats': 'NFL_Player_Defense_Stats',
-        'Kick Returns Stats': 'NFL_Player_Kick_Returns_Stats',
-        'Kicking Stats': 'NFL_Player_Kicking_Stats',
-        'Passing Stats': 'NFL_Player_Passing_Stats',
-        'Punt Returns Stats': 'NFL_Player_Punt_Returns_Stats',
-        'Punting Stats': 'NFL_Player_Punting_Stats',
-        'Receiving Stats': 'NFL_Player_Receiving_Stats',
-        'Rushing Stats': 'NFL_Player_Rushing_Stats',
-        'Scoring Stats': 'NFL_Player_Scoring_Stats',
+        'Team List': 'NBA_Team',
+        'Scoring Stats': 'NBA_Player_Scoring_Stats',
+        'Steals Stats': 'NBA_Player_Steals_Stats',
+        'Fouls Stats': 'NBA_Player_Fouls_Stats',
+        'Rebounds Stats': 'NBA_Player_Rebounds_Stats',
+        'Blocks Stats': 'NBA_Player_Blocks_Stats',
+        'Assists Stats': 'NBA_Player_Assists_Stats',
     }
     categories_list = [
         NBA_Player_Assists_Stats,
@@ -221,7 +217,7 @@ def NBA_Player_View(request, name):
     if selected_category:
         model_name = category_models[selected_category]
         model = apps.get_model('sports_stats', model_name) 
-        stats_data = model.objects.all()
+        stats_data = model.objects.filter(PlayerName=name)
         field_names = [field.name for field in model._meta.fields]
 
     # Invert the dictionary for model class name to category name mapping
