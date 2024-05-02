@@ -68,3 +68,43 @@ nav {
     margin-top: 50px;
     margin-bottom: 50px;
 }
+
+/* marquee */
+.marquee-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #000;
+    /* Black background for visibility */
+    color: #fff;
+    /* White text color */
+    text-align: center;
+    z-index: 1030;
+    /* Higher than Bootstrap's fixed navbar z-index */
+    overflow: hidden;
+    /* Hide overflow */
+    padding: 5px 0;
+    /* Reduced padding for smaller height */
+    font-size: 14px;
+    /* Smaller font size */
+    line-height: 1.2;
+    /* Adjust line height for text alignment */
+}
+
+@keyframes marqueeEffect {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+.marquee-content {
+    display: block;
+    width: auto;
+    white-space: nowrap;
+    animation: marqueeEffect 20s linear infinite;
+    /* Increase duration */
+}
