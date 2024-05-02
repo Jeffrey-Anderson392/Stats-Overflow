@@ -45,7 +45,7 @@ nav {
     position: sticky;
     top: 0;
     /* Adjust if there is a fixed header, e.g., top: 50px; */
-    background-color: white;
+
     z-index: 1020;
     /* Ensures the header is above other content */
 }
@@ -55,4 +55,16 @@ nav {
     /* Adjust based on your needs */
     overflow-y: auto;
     /* Adds vertical scrollbar */
+}
+
+.bottom-border {
+    border-bottom: 4px solid;
+    border-bottom-color: rgb(64, 64, 64);
+}
+
+/* This is where the seperation of tables */
+
+.seperation-of-table {
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
