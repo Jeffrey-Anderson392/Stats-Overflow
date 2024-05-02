@@ -1,7 +1,7 @@
 {% extends 'sports_stats/base.html' %}
 {% load custom_tags %}
 {% block title %}
-    NHL Stats
+    Valorant Stats
 {% endblock %}
 
 {% block content %}
@@ -24,7 +24,7 @@
                                 {% with forloop.counter0 as field_index %}
                                     {% if field_index == 1 %}  <!-- Assuming PlayerName is in the second column -->
                                         {% if item|get_field:field_name %}
-                                            <td><a href="{% url 'Valorant_Player' name=item|get_field:field_name %}">{{ item|get_field:field_name }}</a></td>
+                                            <td>>{{ item|get_field:field_name }}</td>
                                         {% else %}
                                             <td>No Name</td>
                                         {% endif %}
