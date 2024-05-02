@@ -48,6 +48,7 @@ def NFL_Player_View(request, name):
         'Passing Stats', 'Punt Returns Stats', 'Punting Stats',
         'Receiving Stats', 'Rushing Stats', 'Scoring Stats'
     ]
+
     category_models = {
         'Defense Stats': 'NFL_Player_Defense_Stats',
         'Kick Returns Stats': 'NFL_Player_Kick_Returns_Stats',
@@ -59,6 +60,42 @@ def NFL_Player_View(request, name):
         'Rushing Stats': 'NFL_Player_Rushing_Stats',
         'Scoring Stats': 'NFL_Player_Scoring_Stats',
     }
+
+    categories_list = [
+        NFL_Player_Defense_Stats,
+        NFL_Player_Kick_Returns_Stats,
+        NFL_Player_Kicking_Stats,
+        NFL_Player_Passing_Stats,
+        NFL_Player_Punt_Returns_Stats,
+        NFL_Player_Punting_Stats,
+        NFL_Player_Receiving_Stats,
+        NFL_Player_Rushing_Stats,
+        NFL_Player_Scoring_Stats
+    ]
+
+
+    # Invert the dictionary for model class name to category name mapping
+    model_to_category = {v: k for k, v in category_models.items()}
+
+
+    newlist = []
+    new_category_models = []
+
+    for model_class in categories_list:
+        model_name = model_class.__name__  # Get the class name as a string
+        category_name = model_to_category.get(model_name)  # Get the category name using the inverted dictionary
+
+        try:
+            model_class.objects.get(PlayerName=name)
+            if category_name:
+                newlist.append(category_name)
+                
+        except ObjectDoesNotExist:
+            pass
+
+    stats_categories = newlist
+    
+
 
     selected_category = request.GET.get('category')
     stats_data = None
