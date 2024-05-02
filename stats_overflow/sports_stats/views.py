@@ -117,147 +117,149 @@ def NFL_Player_View(request, name):
         "player_name": name
     })
 
-    # try:
-    #     defense = NFL_Player_Defense_Stats.objects.get(PlayerName=name)
-    #     context['defense'] = defense
-    # except ObjectDoesNotExist:
-    #     pass
-
-    # try:
-    #     kick_returns = NFL_Player_Kick_Returns_Stats.objects.get(PlayerName=name)
-    #     context['kick_returns'] = kick_returns
-    # except ObjectDoesNotExist:
-    #     pass
-
-    # try:
-    #     kicking = NFL_Player_Kicking_Stats.objects.get(PlayerName=name)
-    #     context['kicking'] = kicking
-    # except ObjectDoesNotExist:
-    #     pass
-
-    # try:
-    #     passing = NFL_Player_Passing_Stats.objects.get(PlayerName=name)
-    #     context['passing'] = passing
-    # except ObjectDoesNotExist:
-    #     pass
-
-    # try:
-    #     punt_returns = NFL_Player_Punt_Returns_Stats.objects.get(PlayerName=name)
-    #     context['punt_returns'] = punt_returns
-    # except ObjectDoesNotExist:
-    #     pass
-
-    # try:
-    #     punting = NFL_Player_Punting_Stats.objects.get(PlayerName=name)
-    #     context['punting'] = punting
-    # except ObjectDoesNotExist:
-    #     pass
-
-    # try:
-    #     receiving = NFL_Player_Receiving_Stats.objects.get(PlayerName=name)
-    #     context['receiving'] = receiving
-    # except ObjectDoesNotExist: 
-    #     pass
-
-    # try:
-    #     rushing = NFL_Player_Rushing_Stats.objects.get(PlayerName=name)
-    #     context['rushing'] = rushing
-    # except ObjectDoesNotExist:
-    #     pass
-
-    # try:
-    #     scoring = NFL_Player_Scoring_Stats.objects.get(PlayerName=name)
-    #     context['scoring'] = scoring
-    # except ObjectDoesNotExist:
-    #     pass
-
-    # return render(request, 'sports_stats/NFL_Player.html', context)
 
 def NHL_Player_View(request, name):
     context = {}
-    try:
-        goaltending = NHL_Player_Goaltending_Stats.objects.get(PlayerName=name)
-        context['goaltending'] = goaltending
-    except ObjectDoesNotExist:
-        pass
+    context['player_name'] = name
 
-    try:
-        penalties = NHL_Player_Penalties_Stats.objects.get(PlayerName=name)
-        context['penalties'] = penalties
-    except ObjectDoesNotExist:
-        pass
+    stats_categories = [
+        'Goaltending Stats', 'Penalties Stats', 'Scoring Stats'
+    ]
+    category_models = {
+        'Goaltending Stats': 'NHL_Player_Goaltending_Stats',
+        'Penalties Stats': 'NHL_Player_Penalties_Stats',
+        'Scoring Stats': 'NHL_Player_Scoring_Stats',
+    }
+    categories_list = [
+        NHL_Player_Goaltending_Stats,
+        NHL_Player_Penalties_Stats,
+        NHL_Player_Scoring_Stats
+    ]
+    selected_category = request.GET.get('category')
+    stats_data = None
+    field_names = []
+    if selected_category:
+        model_name = category_models[selected_category]
+        model = apps.get_model('sports_stats', model_name) 
+        stats_data = model.objects.all()
+        field_names = [field.name for field in model._meta.fields]
 
-    try:
-        scoring = NHL_Player_Scoring_Stats.objects.get(PlayerName=name)
-        context['scoring'] = scoring
-    except ObjectDoesNotExist:
-        pass
+    # Invert the dictionary for model class name to category name mapping
+    model_to_category = {v: k for k, v in category_models.items()}
 
-    # goaltending = NHL_Player_Goaltending_Stats.objects.get(PlayerName=name)
-    # penalties = NHL_Player_Penalties_Stats.objects.get(PlayerName=name)
-    # scoring = NHL_Player_Scoring_Stats.objects.get(PlayerName=name)
-    # context = {
-    #     'goaltending': goaltending,
-    #     'penalties': penalties,
-    #    'scoring': scoring,
-    # }
-    return render(request, 'sports_stats/NHL_Player.html', context)
+
+    newlist = []
+    new_category_models = []
+
+    for model_class in categories_list:
+        model_name = model_class.__name__  # Get the class name as a string
+        category_name = model_to_category.get(model_name)  # Get the category name using the inverted dictionary
+
+        try:
+            model_class.objects.get(PlayerName=name)
+            if category_name:
+                newlist.append(category_name)
+                
+        except ObjectDoesNotExist:
+            pass
+
+    stats_categories = newlist
+    
+
+
+    selected_category = request.GET.get('category')
+    stats_data = None
+    field_names = []
+
+    if selected_category:
+        model_name = category_models[selected_category]
+        model = apps.get_model('sports_stats', model_name) 
+        stats_data = model.objects.filter(PlayerName=name)
+        field_names = [field.name for field in model._meta.fields]
+
+    return render(request, 'sports_stats/NHL_Player.html', {
+        "stats_categories": stats_categories,
+        "selected_category": selected_category,
+        "stats_data": stats_data,
+        "field_names": field_names,
+        "player_name": name
+    })
 
 def NBA_Player_View(request, name):
     context = {}
+    context['player_name'] = name
 
-    try:
-        scoring = NBA_Player_Scoring_Stats.objects.get(PlayerName=name)
-        context['scoring'] = scoring
-    except ObjectDoesNotExist:
-        pass
+    stats_categories = [
+        'Team List', 'Defense Stats', 'Kick Returns Stats', 'Kicking Stats', 
+        'Passing Stats', 'Punt Returns Stats', 'Punting Stats',
+        'Receiving Stats', 'Rushing Stats', 'Scoring Stats'
+    ]
+    category_models = {
+        'Team List': 'NFL_Team',
+        'Defense Stats': 'NFL_Player_Defense_Stats',
+        'Kick Returns Stats': 'NFL_Player_Kick_Returns_Stats',
+        'Kicking Stats': 'NFL_Player_Kicking_Stats',
+        'Passing Stats': 'NFL_Player_Passing_Stats',
+        'Punt Returns Stats': 'NFL_Player_Punt_Returns_Stats',
+        'Punting Stats': 'NFL_Player_Punting_Stats',
+        'Receiving Stats': 'NFL_Player_Receiving_Stats',
+        'Rushing Stats': 'NFL_Player_Rushing_Stats',
+        'Scoring Stats': 'NFL_Player_Scoring_Stats',
+    }
+    categories_list = [
+        NBA_Player_Assists_Stats,
+        NBA_Player_Blocks_Stats,
+        NBA_Player_Fouls_Stats,
+        NBA_Player_Rebounds_Stats,
+        NBA_Player_Scoring_Stats,
+        NBA_Player_Steals_Stats
+    ]
 
-    try:
-        steals = NBA_Player_Steals_Stats.objects.get(PlayerName=name)
-        context['steals'] = steals
-    except:
-        pass
+    selected_category = request.GET.get('category')
+    stats_data = None
+    field_names = []
+    if selected_category:
+        model_name = category_models[selected_category]
+        model = apps.get_model('sports_stats', model_name) 
+        stats_data = model.objects.all()
+        field_names = [field.name for field in model._meta.fields]
 
-    try:
-        fouls = NBA_Player_Fouls_Stats.objects.get(PlayerName=name)
-        context['fouls'] = fouls
-    except ObjectDoesNotExist:
-        pass
+    # Invert the dictionary for model class name to category name mapping
+    model_to_category = {v: k for k, v in category_models.items()}
 
-    try:
-        rebounds = NBA_Player_Rebounds_Stats.objects.get(PlayerName=name)
-        context['rebounds'] = rebounds
-    except ObjectDoesNotExist:
-        pass
+    newlist = []
+    new_category_models = []
 
-    try:
-        blocks = NBA_Player_Blocks_Stats.objects.get(PlayerName=name)
-        context['blocks'] = blocks
-    except ObjectDoesNotExist:
-        pass
+    for model_class in categories_list:
+        model_name = model_class.__name__  # Get the class name as a string
+        category_name = model_to_category.get(model_name)  # Get the category name using the inverted dictionary
 
-    try:
-        assists = NBA_Player_Assists_Stats.objects.get(PlayerName=name)
-        context['assists'] = assists
-    except ObjectDoesNotExist:
-        pass
-    # Scoring = NBA_Player_Scoring_Stats.objects.get(PlayerName=name)
-    # Steals = NBA_Player_Steals_Stats.objects.get(PlayerName=name)
-    # Fouls = NBA_Player_Fouls_Stats.objects.get(PlayerName=name)
-    # Rebounds = NBA_Player_Rebounds_Stats.objects.get(PlayerName=name)
-    # Blocks = NBA_Player_Blocks_Stats.objects.get(PlayerName=name)
-    # Assists = NBA_Player_Assists_Stats.objects.get(PlayerName=name)
-    # context = {
-    #     'Scoring': Scoring,
-    #     'Steals': Steals,
-    #     'Fouls': Fouls,
-    #     'Rebounds': Rebounds,
-    #     'Blocks': Blocks,
-    #     'Assists': Assists,
-    # }
-    return render(request, 'sports_stats/NBA_Player.html', context)
+        try:
+            model_class.objects.get(PlayerName=name)
+            if category_name:
+                newlist.append(category_name)
+                
+        except ObjectDoesNotExist:
+            pass
 
+    stats_categories = newlist
+    selected_category = request.GET.get('category')
+    stats_data = None
+    field_names = []
 
+    if selected_category:
+        model_name = category_models[selected_category]
+        model = apps.get_model('sports_stats', model_name) 
+        stats_data = model.objects.filter(PlayerName=name)
+        field_names = [field.name for field in model._meta.fields]
+
+    return render(request, 'sports_stats/NBA_Player.html', {
+        "stats_categories": stats_categories,
+        "selected_category": selected_category,
+        "stats_data": stats_data,
+        "field_names": field_names,
+        "player_name": name
+    })
 
 # Here are the sports views
 

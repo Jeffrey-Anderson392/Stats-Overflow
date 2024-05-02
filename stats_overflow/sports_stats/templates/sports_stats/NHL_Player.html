@@ -1,0 +1,55 @@
+{% extends 'sports_stats/base.html' %}
+{% load custom_tags %}
+{% block title %}
+    NHL Player Stats
+{% endblock %}
+
+{% block content %}
+    <h2>Player Details</h2>
+    <div class="card w-90 m-5">
+        <div class="card-body">
+            <h2>{{ player_name }} Statistics</h2>
+    <form method="get" action="" class="mb-3">
+        <div class="form-group">
+            <label for="categorySelect">Select a Category:</label>
+            <select id="categorySelect" name="category" class="form-control" onchange="this.form.submit()">
+                <option value="">Select a category</option>
+                {% for category in stats_categories %}
+                    <option value="{{ category }}" {% if category == selected_category %}selected{% endif %}>
+                        {{ category }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+    </form>
+    
+    {% if stats_data %}
+    <div class="table-responsive sticky-header">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    {% for field_name in field_names %}
+                        <th>{{ field_name }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in stats_data %}
+                    <tr>
+                        {% for field_name in field_names %}
+                            {% if field_name == "PlayerName" %}  
+                                <td>{{ item|get_field:field_name }}</td>
+                            {% else %}
+                                <td>{{ item|get_field:field_name }}</td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endif %}
+        </div>
+    </div>
+        
+{% endblock %}
