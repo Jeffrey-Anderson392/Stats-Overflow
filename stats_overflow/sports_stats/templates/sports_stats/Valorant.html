@@ -1,13 +1,49 @@
 {% extends 'sports_stats/base.html' %}
-
+{% load custom_tags %}
 {% block title %}
-    Valorant Stats
+    NHL Stats
 {% endblock %}
 
 {% block content %}
-    <h1>Welcome to Stats Overflow</h1>
-    <p>Your user ID is: {{ user.id }}</p>
+    <h1>Player Statistics</h1>
+    {% if stats_data %}
+        <div class="table-responsive sticky-header">
+            <table class="table table-striped">
+        
+                <thead class="table-dark">
+                    <tr>
+                        {% for field_name in field_names %}
+                            <th>{{ field_name }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in stats_data %}
+                        <tr>
+                            {% for field_name in field_names %}
+                                {% with forloop.counter0 as field_index %}
+                                    {% if field_index == 1 %}  <!-- Assuming PlayerName is in the second column -->
+                                        {% if item|get_field:field_name %}
+                                            <td><a href="{% url 'Valorant_Player' name=item|get_field:field_name %}">{{ item|get_field:field_name }}</a></td>
+                                        {% else %}
+                                            <td>No Name</td>
+                                        {% endif %}
+                                    {% else %}
+                                        <td>{{ item|get_field:field_name }}</td>
+                                    {% endif %}
+                                {% endwith %}
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
     
-    
+    <div Class="seperation-of-table"></div>
 
+    
+    
+    
+        
 {% endblock %}
