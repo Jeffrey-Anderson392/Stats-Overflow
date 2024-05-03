@@ -352,6 +352,12 @@ class Valorant_Players(models.Model):
     FirstKills = models.CharField(max_length=10)
     FirstDeaths = models.CharField(max_length=10)
 
+    class Meta:
+        # Specify the table name explicitly
+        db_table = 'sports_stats_valorant_player_stats'
+        # Tell Django not to manage this table
+        managed = False
+
 # class User_Favorite_Valorant_Players:
 #     def __init__(self, player_id, user_id):
 #         self.player_id = player_id
