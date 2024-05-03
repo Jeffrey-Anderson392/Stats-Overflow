@@ -25,7 +25,7 @@ from .models import NHL_Player_Penalties_Stats
 from .models import NHL_Player_Scoring_Stats
 
 from .models import Valorant_Players
-
+from .models import Valorant_Team
 
 from .models import NFL_Team
 from .models import NHL_Team
@@ -355,6 +355,7 @@ def NHL(request):
     })
 
 def Valorant(request):
+    valorant_team_list = Valorant_Team.objects.all()
     players = Valorant_Players.objects.all()
     field_names = []
     if Valorant_Players:
@@ -362,7 +363,7 @@ def Valorant(request):
         stats_data = model.objects.all()
         field_names = [field.name for field in model._meta.fields]
     return render(request, 'sports_stats/Valorant.html', { "player_list": players, "stats_data": stats_data,
-        "field_names": field_names })
+        "field_names": field_names, "team_list": valorant_team_list })
 
 
 
