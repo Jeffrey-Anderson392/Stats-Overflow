@@ -1,10 +1,31 @@
 {% extends 'sports_stats/base.html' %}
 {% load custom_tags %}
+{% load static }
 {% block title %}
     Valorant Stats
 {% endblock %}
-
+<body class="valorant-full">
 {% block content %}
+<h1 class="valorant-title">Valorant Teams</h1>
+{% if team_list %}
+    <div class="table-responsive sticky-header bottom-border">
+        <table class="table table-striped">
+            <thead class="table-dark">
+                <th>Team</th>
+            </thead>
+            {% for team in team_list %}
+                <tr>
+                    <td>{{ team.name }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% else %}
+    <p>There are no teams.</p>
+{% endif %}
+
+<div Class="seperation-of-table"></div>
+
     <h1>Player Statistics</h1>
     {% if stats_data %}
         <div class="table-responsive sticky-header">
@@ -47,3 +68,4 @@
     
         
 {% endblock %}
+    </body>
