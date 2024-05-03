@@ -1,4 +1,8 @@
 /* Puts the right amount of space for the welcome page */
+.valorant-full {
+    background-color: #2b2b2b;
+}
+
 .welcome {
     margin-top: 100px;
     text-align: center;
@@ -109,9 +113,6 @@ nav {
     /* Increase duration */
 }
 
-.valorant-full {
-    background-color: #2b2b2b;
-}
 
 .valorant-title {
     color: red;
